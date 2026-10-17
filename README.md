@@ -105,14 +105,14 @@ The deployed app keeps data in **Neon Postgres** (free tier), because Vercel fun
    |---|---|
    | `GOOGLE_CLIENT_ID` | Your OAuth client ID |
    | `JWT_SECRET` | A new random string: `openssl rand -base64 48` |
-   | `ALLOWED_EMAILS` | Your Gmail address(es). Required in the cloud; `*` allows anyone. |
+   | `ALLOWED_EMAILS` | Optional. Leave it out so anyone can sign in with Google (each account gets its own private dashboard), or list emails to restrict access. |
 
 3. **Add the database.** In the project, go to **Storage → Create Database → Neon** and connect it to the project. This adds `DATABASE_URL` for you; the table is created on first use. Pick the region closest to you, for example Singapore. Alternatively, paste a connection string from your own Neon account as `DATABASE_URL`.
 4. **Redeploy** so the variables take effect.
 5. **Authorize the live URL.** In Google Cloud Console, open your OAuth client and add `https://<your-project>.vercel.app` to **Authorized JavaScript origins**. It can take a few minutes to apply.
 6. **Move your existing data.** In the local app, use **Settings → Export backup**. In the deployed app, use **Settings → Import backup**.
 
-Until steps 2–3 are done, the deployed sign-in page lists what's missing and serves no data. After that, every `git push` to `main` redeploys automatically.
+Until `GOOGLE_CLIENT_ID`, `JWT_SECRET` and the database are set, the deployed sign-in page lists what's missing and serves no data. After that, every `git push` to `main` redeploys automatically.
 
 What differs from the Mac app:
 - **Reminders:** there are no macOS notifications from the cloud. Due items still show in **Needs your input**.

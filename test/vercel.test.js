@@ -22,22 +22,21 @@ test('unconfigured deployment serves no data and says what is missing', async ()
     const cfg = (await s.get('/api/public/config')).json;
     assert.equal(cfg.authRequired, true);
     assert.equal(cfg.googleClientId, null);
-    assert.deepEqual(cfg.setupMissing, ['GOOGLE_CLIENT_ID', 'JWT_SECRET (32+ characters)', 'ALLOWED_EMAILS', 'DATABASE_URL (connect a Neon database)']);
+    assert.deepEqual(cfg.setupMissing, ['GOOGLE_CLIENT_ID', 'JWT_SECRET (32+ characters)', 'DATABASE_URL (connect a Neon database)']);
     assert.equal((await s.get('/api/db')).status, 503);
   } finally { await s.close(); }
 });
 
-test('an empty allowlist is refused in the cloud; "*" opts in to any account', async () => {
-  const open = await serve({ ...FULL, ALLOWED_EMAILS: '' });
-  try {
-    assert.deepEqual((await open.get('/api/public/config')).json.setupMissing, ['ALLOWED_EMAILS']);
-  } finally { await open.close(); }
-  const anyone = await serve({ ...FULL, ALLOWED_EMAILS: '*' });
-  try {
-    const cfg = (await anyone.get('/api/public/config')).json;
-    assert.deepEqual(cfg.setupMissing, []);
-    assert.equal(cfg.restricted, false);
-  } finally { await anyone.close(); }
+test('without ALLOWED_EMAILS anyone may sign in, but still only with a valid session', async () => {
+  for (const allow of ['', '*']) {
+    const s = await serve({ ...FULL, ALLOWED_EMAILS: allow });
+    try {
+      const cfg = (await s.get('/api/public/config')).json;
+      assert.deepEqual(cfg.setupMissing, []);
+      assert.equal(cfg.restricted, false);
+      assert.equal((await s.get('/api/db')).status, 401);
+    } finally { await s.close(); }
+  }
 });
 
 test('configured deployment requires a valid session and accepts POSTGRES_URL', async () => {
