@@ -2,7 +2,7 @@
   "name": "givemebucks",
   "version": "1.0.0",
   "private": true,
-  "description": "GiveMeBucks \u2014 a Grafana-style dashboard for your income, savings, investments and spending, with macOS reminders.",
+  "description": "GiveMeBucks — a Grafana-style dashboard for your income, savings, investments and spending, with macOS reminders.",
   "type": "module",
   "scripts": {
     "start": "node server.js --open",
@@ -12,6 +12,6 @@
     "test": "node --test test/"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.12"
   }
 }

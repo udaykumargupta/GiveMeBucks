@@ -3,6 +3,7 @@ import * as C from './calc.js';
 import { money, moneyShort, parseAmount, daysAgoText } from './format.js';
 import { h, icon, openDrawer, closeDrawer, openModal, closeModal, confirmDialog, toast, download, uid } from './ui.js';
 import { sampleDb } from './sample.js';
+import { api } from './auth.js';
 
 // --------------------------------------------------------- field helpers
 function field(label, input, hint) {
@@ -423,7 +424,7 @@ export function openSettings(app) {
   const invEvery = h('input', { type: 'number', min: '1', max: '365', value: s.reminders.investmentEveryDays });
   const payDay = h('input', { type: 'number', min: '1', max: '28', value: s.reminders.incomeDay });
   const status = h('span', { class: 'muted small' });
-  fetch('/api/reminder/status').then((r) => r.json()).then((st) => {
+  api('/api/reminder/status').then((r) => r.json()).then((st) => {
     status.textContent = st.lastSentAt ? `Last reminder sent ${new Date(st.lastSentAt).toLocaleString()}` : 'No reminder sent yet';
   }).catch(() => {});
 
@@ -445,7 +446,7 @@ export function openSettings(app) {
   }, { onError: (m) => showError(err, m) }).then((ok) => ok && closeDrawer());
 
   const testReminder = async () => {
-    const r = await fetch('/api/reminder/test', { method: 'POST' }).then((x) => x.json()).catch(() => ({ ok: false }));
+    const r = await api('/api/reminder/test', { method: 'POST' }).then((x) => x.json()).catch(() => ({ ok: false }));
     toast(r.ok ? 'Reminder sent — check your notifications' : 'Could not send a notification (see server log)', r.ok ? 'success' : 'error');
   };
   const exportJson = () => download(`givemebucks-backup-${C.todayISO()}.json`, JSON.stringify(app.db(), null, 2), 'application/json');
@@ -503,7 +504,7 @@ export function openSettings(app) {
     h('p', { class: 'muted small' }, 'Reminders come from the local server, so it must be running. Run ', h('code', {}, 'npm run reminders:install'), ' once to start it automatically at login.'),
     err,
     h('h3', { class: 'section-title' }, 'Your data'),
-    h('p', { class: 'muted small' }, 'Stored only on this Mac in givemebucks/data/db.json, with a daily backup in data/backups.'),
+    h('p', { class: 'muted small' }, 'Stored only on this Mac, in the givemebucks/data folder, with a daily backup.'),
     h('div', { class: 'inline-actions wrap' },
       h('button', { type: 'button', class: 'btn secondary sm', onclick: exportJson }, h('span', { html: icon('download') }), 'Export backup (JSON)'),
       h('button', { type: 'button', class: 'btn secondary sm', onclick: exportCsv }, h('span', { html: icon('table') }), 'Export CSV'),

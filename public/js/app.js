@@ -3,7 +3,8 @@
 import * as C from './calc.js';
 import { dashboardSpec } from './panels.js';
 import { openCheckin, openIncome, openAccounts, openSettings } from './forms.js';
-import { h, icon, toast, openModal, closeModal, closeDrawer, openMenu, closeMenu, confirmDialog, download } from './ui.js';
+import { h, icon, logoSvg, toast, openModal, closeModal, closeDrawer, openMenu, closeMenu, confirmDialog, download } from './ui.js';
+import { api, loadConfig, authRequired, currentUser, signOut, onSignOut, renderGate } from './auth.js';
 import { setUnits } from './format.js';
 import { showTip, hideTip } from './charts.js';
 import { sampleDb } from './sample.js';
@@ -51,7 +52,7 @@ const actions = {
 
 // ------------------------------------------------------------- server I/O
 async function load() {
-  const r = await fetch('/api/db');
+  const r = await api('/api/db');
   if (!r.ok) throw new Error(`Server returned ${r.status}`);
   state.db = await r.json();
 }
@@ -60,7 +61,7 @@ async function persist(next, msg, onError) {
   state.saving = true;
   renderSaveState();
   try {
-    const r = await fetch('/api/db', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(next) });
+    const r = await api('/api/db', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(next) });
     if (r.status === 409) {
       state.db = (await r.json()).db;
       render();
@@ -75,6 +76,7 @@ async function persist(next, msg, onError) {
     if (msg) toast(msg);
     return true;
   } catch (e) {
+    if (authRequired() && !currentUser()) return false; // signed out; the sign-in page explains why
     const m = `Couldn't save (${e.message}). Is the GiveMeBucks server running?`;
     onError ? onError(m) : toast(m, 'error');
     return false;
@@ -140,7 +142,7 @@ function renderChrome(L, due) {
   const lc = L.lastCheckin;
 
   const nav = h('nav', { class: 'sidemenu', 'aria-label': 'Main' },
-    h('div', { class: 'logo', title: 'GiveMeBucks', html: '<svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f05a28"/><stop offset="1" stop-color="#fbca0a"/></linearGradient></defs><path d="M4 24l7-8 5 5 11-13" fill="none" stroke="url(#lg)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 8h6v6" fill="none" stroke="url(#lg)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' }),
+    h('div', { class: 'logo', title: 'GiveMeBucks', html: logoSvg('nav') }),
     navBtn('apps', 'Dashboard', () => window.scrollTo({ top: 0, behavior: 'smooth' }), true),
     navBtn('plus', 'Update balances', actions.checkin),
     navBtn('rupee', 'Log income', actions.income),
@@ -151,7 +153,8 @@ function renderChrome(L, due) {
     }, false, due.filter((d) => d.severity !== 'info').length),
     h('div', { class: 'spacer' }),
     navBtn(state.theme === 'dark' ? 'sun' : 'moon', state.theme === 'dark' ? 'Light theme' : 'Dark theme', toggleTheme),
-    navBtn('cog', 'Settings', actions.settings));
+    navBtn('cog', 'Settings', actions.settings),
+    authRequired() ? accountButton() : null);
 
   const timeBtn = h('button', { class: 'tool-btn', 'aria-haspopup': 'menu', onclick: (e) => openMenu(e.currentTarget, [
     { header: 'Time range' },
@@ -202,11 +205,30 @@ function navBtn(ic, label, onClick, active = false, badge = 0) {
   h('span', { html: icon(ic) }), h('span', { class: 'nav-text' }, label), badge ? h('span', { class: 'nav-badge' }, String(badge)) : null);
 }
 
+/** Google avatar at the bottom of the sidebar (like Grafana's profile button) with Sign out. */
+function accountButton() {
+  const u = currentUser() || { name: '', email: '' };
+  const label = u.name || u.email || 'Account';
+  const initials = h('span', { class: 'avatar initials' }, label.split(/[\s@.]+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase());
+  const avatar = u.picture
+    ? h('img', { class: 'avatar', src: u.picture, alt: '', referrerpolicy: 'no-referrer', onerror: (e) => e.currentTarget.replaceWith(initials) })
+    : initials;
+  return h('button', {
+    class: 'nav-btn account-btn', 'aria-label': `Signed in as ${label}`, 'aria-haspopup': 'menu',
+    onclick: (e) => openMenu(e.currentTarget, [
+      { header: u.email && u.name ? `${u.name} · ${u.email}` : label },
+      { label: 'Sign out', icon: 'logout', onClick: () => signOut() },
+    ], { placement: 'right' }),
+    onpointerenter: (e) => { const r = e.currentTarget.getBoundingClientRect(); showTip(r.right - 4, r.top - 6, { title: label, foot: u.name ? u.email : undefined }); },
+    onpointerleave: hideTip,
+  }, avatar, h('span', { class: 'nav-text' }, label));
+}
+
 function renderSaveState() {
   const el = document.getElementById('save-state');
   if (!el) return;
   el.className = `save-state ${state.saving ? 'saving' : 'saved'}`;
-  el.textContent = state.saving ? 'Saving…' : 'Saved locally';
+  el.textContent = state.saving ? 'Saving…' : authRequired() ? 'Saved' : 'Saved locally';
 }
 
 // ------------------------------------------------------------- dashboard
@@ -380,7 +402,7 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('visibilitychange', async () => {
   if (document.visibilityState !== 'visible' || !state.db) return;
   try {
-    const r = await fetch('/api/db');
+    const r = await api('/api/db');
     const db = await r.json();
     if ((db.rev ?? 0) !== (state.db.rev ?? 0)) { state.db = db; render(); }
   } catch { /* server offline; keep current view */ }
@@ -388,16 +410,41 @@ document.addEventListener('visibilitychange', async () => {
 // Charts scroll with the page; a stale tooltip would float in place.
 window.addEventListener('scroll', hideTip, { passive: true });
 
-(async function start() {
-  document.documentElement.dataset.theme = state.theme;
+function showServerDown(e) {
+  document.getElementById('app').replaceChildren(h('div', { class: 'welcome' }, h('div', { class: 'welcome-card' },
+    h('h2', {}, 'Cannot reach the GiveMeBucks server'),
+    h('p', { class: 'muted' }, `Start it with "npm start" in the givemebucks folder, then reload. (${e.message})`))));
+}
+
+/** Sign-in page, shown on first visit (when sign-in is enabled) and after signing out. */
+function showGate({ expired = false } = {}) {
+  state.db = null;
+  closeMenu(); closeModal(); closeDrawer(true); hideTip();
+  document.title = 'Sign in · GiveMeBucks';
+  renderGate(document.getElementById('app'), { expired, onSignedIn: openDashboard });
+}
+onSignOut(({ expired }) => showGate({ expired }));
+
+async function openDashboard() {
   try {
     await load();
   } catch (e) {
-    document.getElementById('app').replaceChildren(h('div', { class: 'welcome' }, h('div', { class: 'welcome-card' },
-      h('h2', {}, 'Cannot reach the GiveMeBucks server'),
-      h('p', { class: 'muted' }, `Start it with "npm start" in the givemebucks folder, then reload. (${e.message})`))));
+    if (authRequired() && !currentUser()) return; // a 401 already brought up the sign-in page
+    showServerDown(e);
     return;
   }
   render();
   route();
+}
+
+(async function start() {
+  document.documentElement.dataset.theme = state.theme;
+  try {
+    await loadConfig();
+  } catch (e) {
+    showServerDown(e);
+    return;
+  }
+  if (authRequired() && !currentUser()) showGate();
+  else openDashboard();
 })();

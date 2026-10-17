@@ -1,3 +1,7 @@
 data/
 node_modules/
 .DS_Store
+# Secrets — never commit. Copy .env.example to .env instead.
+.env
+.env.*
+!.env.example

@@ -70,23 +70,49 @@ The server checks once a day at your reminder time (default 20:00; change it in 
 
 **Settings → Send test reminder** checks that notifications work. With `brew install terminal-notifier`, clicking a notification opens the check-in form directly.
 
+## Google sign-in (optional)
+
+Without setup, GiveMeBucks runs as a single-user app on this Mac with no sign-in. To require **Sign in with Google**, which works the same way as in Kairos:
+
+1. In [Google Cloud Console](https://console.cloud.google.com/apis/credentials), create an **OAuth client ID** of type **Web application**.
+   - Under **Authorized JavaScript origins**, add `http://localhost:4180` and `http://localhost`.
+   - No redirect URI is needed.
+2. Copy `.env.example` to `.env` and fill it in:
+   ```bash
+   GOOGLE_CLIENT_ID=1234-abc.apps.googleusercontent.com
+   JWT_SECRET=<output of: openssl rand -base64 48>
+   ALLOWED_EMAILS=you@gmail.com
+   ```
+3. Restart with `npm start`. The dashboard now opens on a sign-in page.
+
+How it works:
+- The browser gets an ID token from Google.
+- The server checks that token against Google's published keys (signature, audience, issuer, expiry and verified email). It then issues its own session token, valid for 7 days, which is stored in the browser and sent as `Authorization: Bearer …`.
+- Each Google account gets its own data file, `data/users/<google-id>.json`.
+- `ALLOWED_EMAILS` limits who can sign in, and is checked on every request. The first allow-listed account to sign in takes over the data you entered before turning sign-in on.
+- Sign out from the avatar at the bottom of the sidebar.
+
+`.env` is git-ignored. Never commit it.
+
 ## Your data
 
-- Stored only in `data/db.json`. The server listens on `127.0.0.1` and rejects requests from other origins.
-- A dated copy is kept in `data/backups/` before the first change each day (the last 30 are kept).
+- Stored only on this Mac: `data/db.json` without sign-in, `data/users/<google-id>.json` with it. The server listens on `127.0.0.1` and rejects requests from other origins.
+- A dated copy is kept in a `backups/` folder next to each file before the first change each day (the last 30 are kept).
 - **Settings** can export a JSON backup or CSV, and can import a backup.
 - `data/` is git-ignored.
 
 ## Development
 
 ```bash
-npm test     # calculation tests (node:test)
+npm test     # calculation, sign-in and API tests (node:test)
 ```
 
 | File | Role |
 |---|---|
-| `server.js` | HTTP server, JSON API, daily reminder scheduler |
-| `lib/store.js`, `lib/notify.js` | File storage with backups; macOS notifications |
+| `server.js` | Local server: settings from `.env`, daily reminder scheduler |
+| `lib/app.js` | Request handler: static files, JSON API, sign-in routes |
+| `lib/auth.js` | Google ID-token verification, session tokens, allowlist |
+| `lib/store.js`, `lib/notify.js` | File storage with backups (one file per account); macOS notifications |
 | `public/js/calc.js` | All finance math (shared by browser and server) |
 | `public/js/panels.js` | Dashboard rows and panels |
 | `public/js/charts.js` | SVG charts (time series, bars, donut, gauge, sparkline) |

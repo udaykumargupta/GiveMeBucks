@@ -53,11 +53,20 @@ const P = {
   bank: '<path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
   chart: '<path d="M3 3v18h18M7 15l4-4 3 3 6-7"/>',
   menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+  logout: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
 };
 export function icon(name, cls = '') {
   return `<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[name] || ''}</svg>`;
 }
 export const iconEl = (name, cls) => h('span', { class: 'icon-wrap', html: icon(name, cls) });
+
+/** The GiveMeBucks mark: a rising line in the brand's orange-to-yellow gradient. */
+export function logoSvg(id = 'logo') {
+  const g = `gmb-grad-${id}`;
+  return `<svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="${g}" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f05a28"/><stop offset="1" stop-color="#fbca0a"/></linearGradient></defs>` +
+    `<path d="M4 24l7-8 5 5 11-13" fill="none" stroke="url(#${g})" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>` +
+    `<path d="M21 8h6v6" fill="none" stroke="url(#${g})" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
 
 // --------------------------------------------------------------- toasts
 export function toast(message, kind = 'success') {
@@ -135,7 +144,7 @@ export function confirmDialog({ title, message, confirmText = 'Confirm', danger 
 
 // ----------------------------------------------------------- dropdowns
 let menuClose = null;
-export function openMenu(anchor, items, { align = 'left' } = {}) {
+export function openMenu(anchor, items, { align = 'left', placement = 'below' } = {}) {
   closeMenu();
   const menu = h('div', { class: 'menu', role: 'menu' },
     items.map((it) => it === '-' ? h('div', { class: 'menu-sep' }) : it.header ? h('div', { class: 'menu-header' }, it.header) :
@@ -146,9 +155,17 @@ export function openMenu(anchor, items, { align = 'left' } = {}) {
       it.hint ? h('span', { class: 'menu-hint' }, it.hint) : null)));
   document.body.appendChild(menu);
   const r = anchor.getBoundingClientRect();
-  const mw = menu.offsetWidth;
-  menu.style.top = `${r.bottom + 4}px`;
-  menu.style.left = `${Math.max(8, Math.min(window.innerWidth - mw - 8, align === 'right' ? r.right - mw : r.left))}px`;
+  const mw = menu.offsetWidth, mh = menu.offsetHeight;
+  let top, left;
+  if (placement === 'right') {
+    left = r.right + 6;
+    top = r.bottom - mh;
+  } else {
+    left = align === 'right' ? r.right - mw : r.left;
+    top = r.bottom + mh + 4 > window.innerHeight ? r.top - mh - 4 : r.bottom + 4;
+  }
+  menu.style.top = `${Math.max(8, Math.min(window.innerHeight - mh - 8, top))}px`;
+  menu.style.left = `${Math.max(8, Math.min(window.innerWidth - mw - 8, left))}px`;
   const onDoc = (e) => { if (!menu.contains(e.target) && !anchor.contains(e.target)) closeMenu(); };
   setTimeout(() => document.addEventListener('pointerdown', onDoc), 0);
   menuClose = () => { menu.remove(); document.removeEventListener('pointerdown', onDoc); };
