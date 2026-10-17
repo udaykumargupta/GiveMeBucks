@@ -3,7 +3,7 @@ import * as C from './calc.js';
 import { money, moneyShort, parseAmount, daysAgoText } from './format.js';
 import { h, icon, openDrawer, closeDrawer, openModal, closeModal, confirmDialog, toast, download, uid } from './ui.js';
 import { sampleDb } from './sample.js';
-import { api } from './auth.js';
+import { api, getConfig, backupNote } from './auth.js';
 
 // --------------------------------------------------------- field helpers
 function field(label, input, hint) {
@@ -423,10 +423,14 @@ export function openSettings(app) {
   const bankEvery = h('input', { type: 'number', min: '1', max: '60', value: s.reminders.bankEveryDays });
   const invEvery = h('input', { type: 'number', min: '1', max: '365', value: s.reminders.investmentEveryDays });
   const payDay = h('input', { type: 'number', min: '1', max: '28', value: s.reminders.incomeDay });
+  const macReminders = getConfig().reminders === 'macos';
+  const inDatabase = getConfig().storage === 'database';
   const status = h('span', { class: 'muted small' });
-  api('/api/reminder/status').then((r) => r.json()).then((st) => {
-    status.textContent = st.lastSentAt ? `Last reminder sent ${new Date(st.lastSentAt).toLocaleString()}` : 'No reminder sent yet';
-  }).catch(() => {});
+  if (macReminders) {
+    api('/api/reminder/status').then((r) => r.json()).then((st) => {
+      status.textContent = st.lastSentAt ? `Last reminder sent ${new Date(st.lastSentAt).toLocaleString()}` : 'No reminder sent yet';
+    }).catch(() => {});
+  }
 
   const save = () => app.save((d) => {
     d.settings = {
@@ -470,18 +474,18 @@ export function openSettings(app) {
     let data;
     try { data = JSON.parse(await f.text()); } catch { return toast('That file is not valid JSON', 'error'); }
     if (!['accounts', 'snapshots', 'income'].every((k) => Array.isArray(data[k]))) return toast('That file is not a GiveMeBucks backup', 'error');
-    if (!(await confirmDialog({ title: 'Replace all data?', message: `Import ${data.accounts.length} accounts, ${data.snapshots.length} balances and ${data.income.length} income entries? This replaces what you have now (a backup of the current file is kept in data/backups).`, confirmText: 'Replace', danger: true }))) return;
+    if (!(await confirmDialog({ title: 'Replace all data?', message: `Import ${data.accounts.length} accounts, ${data.snapshots.length} balances and ${data.income.length} income entries? This replaces what you have now. ${backupNote()}`, confirmText: 'Replace', danger: true }))) return;
     await app.replace(data, 'Backup imported');
     closeDrawer();
   } });
   const loadSample = async () => {
     const d = app.db();
-    if (d.accounts.length && !(await confirmDialog({ title: 'Load sample data?', message: 'This replaces your current data with two years of sample data. Your current file is kept in data/backups.', confirmText: 'Load sample', danger: true }))) return;
+    if (d.accounts.length && !(await confirmDialog({ title: 'Load sample data?', message: `This replaces your current data with two years of sample data. ${backupNote()}`, confirmText: 'Load sample', danger: true }))) return;
     await app.replace(sampleDb(C.todayISO()), 'Sample data loaded');
     closeDrawer();
   };
   const erase = async () => {
-    if (!(await confirmDialog({ title: 'Erase all data?', message: 'Removes every account, balance and income entry. Settings are kept. A copy of the current file stays in data/backups.', confirmText: 'Erase everything', danger: true }))) return;
+    if (!(await confirmDialog({ title: 'Erase all data?', message: `Removes every account, balance and income entry. Settings are kept. ${backupNote()}`, confirmText: 'Erase everything', danger: true }))) return;
     const d = app.db();
     await app.replace({ accounts: [], snapshots: [], income: [], settings: d.settings, meta: {} }, 'All data erased');
     closeDrawer();
@@ -493,18 +497,24 @@ export function openSettings(app) {
     h('h3', { class: 'section-title' }, 'Net-worth goal'),
     h('div', { class: 'grid-2' }, field('Target', goal), field('Reach it by', goalBy)),
     h('h3', { class: 'section-title' }, h('span', { html: icon('bell') }), 'Reminders'),
-    h('label', { class: 'check' }, enabled, h('span', {}, 'Send me a macOS notification when data is due')),
+    macReminders ? h('label', { class: 'check' }, enabled, h('span', {}, 'Send me a macOS notification when data is due')) : null,
     h('div', { class: 'grid-2' },
-      field('Daily reminder time', at, 'Sent once a day if anything below is due.'),
+      macReminders ? field('Daily reminder time', at, 'Sent once a day if anything below is due.') : null,
       field('Salary day of month', payDay, 'Reminds you to log income 2 days after.')),
     h('div', { class: 'grid-2' },
       field('Bank check-in every (days)', bankEvery),
       field('Investment update every (days)', invEvery)),
-    h('div', { class: 'inline-actions' }, h('button', { type: 'button', class: 'btn secondary sm', onclick: testReminder }, h('span', { html: icon('bell') }), 'Send test reminder'), status),
-    h('p', { class: 'muted small' }, 'Reminders come from the local server, so it must be running. Run ', h('code', {}, 'npm run reminders:install'), ' once to start it automatically at login.'),
+    macReminders
+      ? h('div', { class: 'inline-actions' }, h('button', { type: 'button', class: 'btn secondary sm', onclick: testReminder }, h('span', { html: icon('bell') }), 'Send test reminder'), status)
+      : null,
+    macReminders
+      ? h('p', { class: 'muted small' }, 'Reminders come from the local server, so it must be running. Run ', h('code', {}, 'npm run reminders:install'), ' once to start it automatically at login.')
+      : h('p', { class: 'muted small' }, 'In the web version, anything due shows up in “Needs your input” on the dashboard. macOS notifications come only from the Mac app.'),
     err,
     h('h3', { class: 'section-title' }, 'Your data'),
-    h('p', { class: 'muted small' }, 'Stored only on this Mac, in the givemebucks/data folder, with a daily backup.'),
+    h('p', { class: 'muted small' }, inDatabase
+      ? 'Stored in your private GiveMeBucks database, separate for each Google account. Export a backup any time.'
+      : 'Stored only on this Mac, in the givemebucks/data folder, with a daily backup.'),
     h('div', { class: 'inline-actions wrap' },
       h('button', { type: 'button', class: 'btn secondary sm', onclick: exportJson }, h('span', { html: icon('download') }), 'Export backup (JSON)'),
       h('button', { type: 'button', class: 'btn secondary sm', onclick: exportCsv }, h('span', { html: icon('table') }), 'Export CSV'),

@@ -1,0 +1,9 @@
+# Never upload personal data or secrets with `vercel deploy`.
+data/
+.env
+.env.*
+!.env.example
+node_modules/
+test/
+scripts/
+.DS_Store

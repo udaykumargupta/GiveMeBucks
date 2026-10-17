@@ -9,7 +9,8 @@ import { fileURLToPath } from 'node:url';
 import { execFile } from 'node:child_process';
 import { createHandler, send } from './lib/app.js';
 import { createGoogleVerifier, createSessions, parseAllowlist, MIN_SECRET_LENGTH } from './lib/auth.js';
-import { legacyStore, userStore, listUserIds } from './lib/store.js';
+import { legacyStore } from './lib/store.js';
+import { createStorage } from './lib/storage.js';
 import { notify } from './lib/notify.js';
 import { dueItems, todayISO, withDefaults } from './public/js/calc.js';
 
@@ -24,6 +25,7 @@ const PORT = Number(env('PORT')) || 4180;
 const URL_BASE = `http://localhost:${PORT}`;
 const REMINDER_STATE = path.join(DATA, 'reminder-state.json');
 fs.mkdirSync(DATA, { recursive: true });
+const storage = createStorage({ env: process.env, dataDir: DATA });
 
 // ---------------------------------------------------------------- sign-in
 const GOOGLE_CLIENT_ID = env('GOOGLE_CLIENT_ID');
@@ -64,14 +66,12 @@ async function sendReminder(items, { test = false, name = '' } = {}) {
   return notify({ title: 'GiveMeBucks', subtitle, message, url: `${URL_BASE}/#checkin` });
 }
 
-const storeForId = (id) => (id === 'local' ? legacyStore(DATA) : userStore(DATA, id));
-
 async function maybeRemind(now = new Date()) {
   const today = todayISO(now);
   const state = readReminderState();
   let changed = false;
-  for (const id of auth.enabled ? listUserIds(DATA) : ['local']) {
-    const db = storeForId(id).read();
+  for (const id of auth.enabled ? await storage.listUserIds() : ['local']) {
+    const db = await storage.read(id);
     const { reminders } = withDefaults(db).settings;
     if (!reminders.enabled) continue;
     const [hh, mm] = String(reminders.notifyAt || '20:00').split(':').map(Number);
@@ -88,12 +88,13 @@ async function maybeRemind(now = new Date()) {
 }
 
 const reminders = {
+  kind: 'macos',
   test: (userId, db, user) => sendReminder(dueItems(db, todayISO()), { test: true, name: user.name }),
   status: (userId) => readReminderState().users[userId] || {},
 };
 
 // ----------------------------------------------------------------- server
-const handle = createHandler({ publicDir: PUBLIC, dataDir: DATA, auth, reminders });
+const handle = createHandler({ publicDir: PUBLIC, auth, storage, reminders });
 // Only answer requests addressed to this machine (blocks DNS-rebinding reads).
 const ALLOWED_HOSTS = new Set([`localhost:${PORT}`, `127.0.0.1:${PORT}`, `[::1]:${PORT}`]);
 
@@ -104,13 +105,14 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, '127.0.0.1', () => {
   console.log(`GiveMeBucks running at ${URL_BASE}`);
+  const where = storage.kind === 'database' ? 'Neon Postgres (DATABASE_URL)' : auth.enabled ? path.join(DATA, 'users') : legacyStore(DATA).file;
   if (!auth.enabled) {
-    console.log(`Sign-in: off (local mode). Data: ${legacyStore(DATA).file}`);
+    console.log(`Sign-in: off (local mode). Data: ${where}`);
     console.log('         Set GOOGLE_CLIENT_ID and JWT_SECRET in .env to require Google sign-in.');
   } else {
-    console.log(`Sign-in: Google — ${auth.allow.size ? `only ${[...auth.allow].join(', ')}` : 'any Google account (each gets a private dashboard)'}`);
-    console.log(`Data: ${path.join(DATA, 'users')}`);
-    if (legacyStore(DATA).exists() && !auth.allow.size) {
+    console.log(`Sign-in: Google — ${auth.allow.size && !auth.allow.has('*') ? `only ${[...auth.allow].join(', ')}` : 'any Google account (each gets a private dashboard)'}`);
+    console.log(`Data: ${where}`);
+    if (storage.kind === 'file' && legacyStore(DATA).exists() && !auth.allow.size) {
       console.log('Note: data/db.json (from before sign-in) is not linked to an account. Add your email to');
       console.log('      ALLOWED_EMAILS and it moves to your account the first time you sign in.');
     }

@@ -19,6 +19,12 @@ export async function loadConfig() {
   return config;
 }
 export const authRequired = () => Boolean(config.authRequired);
+/** Server facts the UI adapts to: storage ('file' | 'database'), reminders ('macos' | 'none'). */
+export const getConfig = () => config;
+/** One-line note for confirm dialogs about what happens to the data being replaced. */
+export const backupNote = () => (config.storage === 'database'
+  ? 'Export a backup first (Settings → Your data) if you might want it back.'
+  : 'A copy of the current file stays in data/backups.');
 
 function claimsOf(t) {
   try {
@@ -85,6 +91,10 @@ export function renderGate(root, { onSignedIn, expired = false }) {
       error,
       config.restricted ? h('p', { class: 'auth-foot' }, 'Only invited Google accounts can sign in.') : null)));
 
+  if (config.setupMissing?.length) {
+    slot.replaceChildren(h('div', { class: 'gsi-missing' }, `This deployment isn’t set up yet. Add these environment variables and redeploy: ${config.setupMissing.join(', ')}.`));
+    return;
+  }
   if (!config.googleClientId) {
     slot.replaceChildren(h('div', { class: 'gsi-missing' }, 'Google sign-in isn’t configured yet. Set GOOGLE_CLIENT_ID on the server and restart it.'));
     return;

@@ -295,7 +295,9 @@ export function dashboardSpec(ctx) {
         },
         {
           id: 'alerts', title: 'Needs your input', w: 8, h: 6,
-          desc: `What to update so the numbers stay accurate. A macOS reminder is sent daily at ${rem.notifyAt} when something is due (while the GiveMeBucks server is running).`,
+          desc: ctx.features?.reminders === 'macos'
+            ? `What to update so the numbers stay accurate. A macOS reminder is sent daily at ${rem.notifyAt} when something is due (while the GiveMeBucks server is running).`
+            : 'What to update so the numbers stay accurate.',
           render(body) {
             const items = ctx.due;
             if (!items.length) {

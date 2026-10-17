@@ -94,6 +94,30 @@ How it works:
 
 `.env` is git-ignored. Never commit it.
 
+## Deploy to Vercel
+
+The deployed app keeps data in **Neon Postgres** (free tier), because Vercel functions have no disk that survives between requests. It always requires Google sign-in.
+
+1. **Import the repo.** On [vercel.com/new](https://vercel.com/new), import `GiveMeBucks` from GitHub and keep the **Other** framework preset. `vercel.json` already sets up the static site and the API.
+2. **Set the environment variables** (Production):
+
+   | Variable | Value |
+   |---|---|
+   | `GOOGLE_CLIENT_ID` | Your OAuth client ID |
+   | `JWT_SECRET` | A new random string: `openssl rand -base64 48` |
+   | `ALLOWED_EMAILS` | Your Gmail address(es). Required in the cloud; `*` allows anyone. |
+
+3. **Add the database.** In the project, go to **Storage → Create Database → Neon** and connect it to the project. This adds `DATABASE_URL` for you; the table is created on first use. Pick the region closest to you, for example Singapore. Alternatively, paste a connection string from your own Neon account as `DATABASE_URL`.
+4. **Redeploy** so the variables take effect.
+5. **Authorize the live URL.** In Google Cloud Console, open your OAuth client and add `https://<your-project>.vercel.app` to **Authorized JavaScript origins**. It can take a few minutes to apply.
+6. **Move your existing data.** In the local app, use **Settings → Export backup**. In the deployed app, use **Settings → Import backup**.
+
+Until steps 2–3 are done, the deployed sign-in page lists what's missing and serves no data. After that, every `git push` to `main` redeploys automatically.
+
+What differs from the Mac app:
+- **Reminders:** there are no macOS notifications from the cloud. Due items still show in **Needs your input**.
+- **Backups:** there are no `data/backups` files. Neon keeps its own restore history, and you can export a backup any time.
+
 ## Your data
 
 - Stored only on this Mac: `data/db.json` without sign-in, `data/users/<google-id>.json` with it. The server listens on `127.0.0.1` and rejects requests from other origins.
@@ -104,13 +128,15 @@ How it works:
 ## Development
 
 ```bash
-npm test     # calculation, sign-in and API tests (node:test)
+npm test     # calculation, sign-in, storage, API and Vercel tests (node:test)
 ```
 
 | File | Role |
 |---|---|
 | `server.js` | Local server: settings from `.env`, daily reminder scheduler |
-| `lib/app.js` | Request handler: static files, JSON API, sign-in routes |
+| `lib/app.js` | Request handler: static files, JSON API, sign-in routes (shared by the Mac server and Vercel) |
+| `lib/storage.js` | Where data lives: JSON files, or Neon Postgres when `DATABASE_URL` is set |
+| `api/index.js`, `vercel.json` | Vercel function entry point and routing |
 | `lib/auth.js` | Google ID-token verification, session tokens, allowlist |
 | `lib/store.js`, `lib/notify.js` | File storage with backups (one file per account); macOS notifications |
 | `public/js/calc.js` | All finance math (shared by browser and server) |

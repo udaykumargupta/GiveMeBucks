@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHandler } from '../lib/app.js';
 import { createSessions, parseAllowlist, AuthError } from '../lib/auth.js';
+import { fileStorage } from '../lib/storage.js';
 
 const PUBLIC = fileURLToPath(new URL('../public', import.meta.url));
 const quiet = { log() {}, warn() {}, error() {} };
@@ -25,8 +26,8 @@ async function start({ signIn = true, allow = '' } = {}) {
   const auth = signIn
     ? { enabled: true, clientId: 'client-123', allow: parseAllowlist(allow), sessions, verifyGoogle: fakeGoogle }
     : { enabled: false, allow: new Set() };
-  const reminders = { test: async () => true, status: () => ({}) };
-  const server = http.createServer(createHandler({ publicDir: PUBLIC, dataDir, auth, reminders, log: quiet }));
+  const reminders = { kind: 'macos', test: async () => true, status: () => ({}) };
+  const server = http.createServer(createHandler({ publicDir: PUBLIC, auth, storage: fileStorage(dataDir), reminders, log: quiet }));
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
   const base = `http://127.0.0.1:${server.address().port}`;
   const call = async (method, p, { token, body, type = 'application/json' } = {}) => {
@@ -49,7 +50,7 @@ const doc = (extra = {}) => ({ rev: 0, accounts: [{ id: 'a', name: 'HDFC', kind:
 test('local mode (no Google client id) works without sign-in, as before', async () => {
   const s = await start({ signIn: false });
   try {
-    assert.deepEqual((await s.call('GET', '/api/public/config')).json, { googleClientId: null, authRequired: false, restricted: false });
+    assert.deepEqual((await s.call('GET', '/api/public/config')).json, { googleClientId: null, authRequired: false, restricted: false, storage: 'file', reminders: 'macos', setupMissing: [] });
     assert.equal((await s.call('GET', '/api/db')).status, 200);
     assert.equal((await s.call('PUT', '/api/db', { body: doc() })).json.rev, 1);
     assert.ok(fs.existsSync(path.join(s.dataDir, 'db.json')));
@@ -60,7 +61,7 @@ test('local mode (no Google client id) works without sign-in, as before', async 
 test('with sign-in on, the API needs a valid session token', async () => {
   const s = await start({ allow: 'me@example.com' });
   try {
-    assert.deepEqual((await s.call('GET', '/api/public/config')).json, { googleClientId: 'client-123', authRequired: true, restricted: true });
+    assert.deepEqual((await s.call('GET', '/api/public/config')).json, { googleClientId: 'client-123', authRequired: true, restricted: true, storage: 'file', reminders: 'macos', setupMissing: [] });
     const anon = await s.call('GET', '/api/db');
     assert.equal(anon.status, 401);
     assert.deepEqual(anon.json, { error: 'unauthorized', message: 'Authentication required' });
@@ -77,6 +78,17 @@ test('with sign-in on, the API needs a valid session token', async () => {
     assert.ok(fs.existsSync(path.join(s.dataDir, 'users', '111.json')), 'stored per user');
     assert.equal((await s.call('GET', '/api/due', { token })).status, 200);
     assert.equal((await s.call('POST', '/api/reminder/test', { token })).json.ok, true);
+  } finally { await s.close(); }
+});
+
+test('a save from a stale tab is refused with the latest data', async () => {
+  const s = await start({ signIn: false });
+  try {
+    assert.equal((await s.call('PUT', '/api/db', { body: doc({ rev: 0 }) })).json.rev, 1);
+    const stale = await s.call('PUT', '/api/db', { body: doc({ rev: 0 }) });
+    assert.equal(stale.status, 409);
+    assert.equal(stale.json.db.rev, 1);
+    assert.equal((await s.call('PUT', '/api/db', { body: doc({ rev: 1 }) })).json.rev, 2);
   } finally { await s.close(); }
 });
 

@@ -4,7 +4,7 @@ import * as C from './calc.js';
 import { dashboardSpec } from './panels.js';
 import { openCheckin, openIncome, openAccounts, openSettings } from './forms.js';
 import { h, icon, logoSvg, toast, openModal, closeModal, closeDrawer, openMenu, closeMenu, confirmDialog, download } from './ui.js';
-import { api, loadConfig, authRequired, currentUser, signOut, onSignOut, renderGate } from './auth.js';
+import { api, loadConfig, authRequired, currentUser, signOut, onSignOut, renderGate, getConfig } from './auth.js';
 import { setUnits } from './format.js';
 import { showTip, hideTip } from './charts.js';
 import { sampleDb } from './sample.js';
@@ -240,7 +240,7 @@ function renderDashboard(L, due) {
   const range = resolveRange(state.range, L);
   // Sample from when tracking began; charts still draw the full range on the x-axis.
   const from = Math.min(range.endDay, Math.max(range.startDay, L.historyStart ?? range.startDay));
-  const ctx = { L, range, vars: state.vars, due, actions, days: sampleDays(from, range.endDay) };
+  const ctx = { L, range, vars: state.vars, due, actions, features: getConfig(), days: sampleDays(from, range.endDay) };
   const grid = h('div', { class: 'grid' });
   const queue = [];
   for (const row of dashboardSpec(ctx)) {
@@ -333,12 +333,12 @@ function welcome() {
   return h('div', { class: 'welcome' },
     h('div', { class: 'welcome-card' },
       h('h2', {}, 'Welcome to GiveMeBucks'),
-      h('p', { class: 'muted' }, 'Track your bank balances, earnings, investments and spending in one dashboard. Everything stays on this Mac.'),
+      h('p', { class: 'muted' }, `Track your bank balances, earnings, investments and spending in one dashboard. ${getConfig().storage === 'database' ? 'Your data is private to your Google account.' : 'Everything stays on this Mac.'}`),
       h('ol', { class: 'steps' },
         h('li', {}, h('strong', {}, 'Add your accounts'), ' — your two bank accounts, plus FDs, mutual funds, stocks, EPF/PPF, gold.'),
         h('li', {}, h('strong', {}, 'Log this month\'s income'), ' — salary and anything else you earned.'),
         h('li', {}, h('strong', {}, 'Check in weekly'), ' — type in your bank balances; spending is worked out for you.'),
-        h('li', {}, h('strong', {}, 'Get reminded'), ' — a macOS notification tells you what to update.')),
+        h('li', {}, h('strong', {}, 'Get reminded'), getConfig().reminders === 'macos' ? ' — a macOS notification tells you what to update.' : ' — “Needs your input” on the dashboard tells you what to update.')),
       h('div', { class: 'welcome-actions' },
         h('button', { class: 'btn primary', onclick: () => actions.accounts() }, h('span', { html: icon('plus') }), 'Add my accounts'),
         h('button', { class: 'btn secondary', onclick: () => replace(sampleDb(C.todayISO()), 'Sample data loaded') }, 'Explore with sample data'))));
@@ -377,7 +377,7 @@ async function refresh() {
 }
 
 async function startFresh() {
-  if (!(await confirmDialog({ title: 'Start with your own data?', message: 'This clears the sample data so you can add your real accounts. (The sample file is kept in data/backups.)', confirmText: 'Clear sample data' }))) return;
+  if (!(await confirmDialog({ title: 'Start with your own data?', message: 'This clears the sample data so you can add your real accounts.', confirmText: 'Clear sample data' }))) return;
   const ok = await replace({ accounts: [], snapshots: [], income: [], settings: { title: 'Wealth Growth' }, meta: {} }, 'Sample data cleared');
   if (ok) actions.accounts();
 }
