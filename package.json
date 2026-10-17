@@ -1,0 +1,17 @@
+{
+  "name": "givemebucks",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GiveMeBucks \u2014 a Grafana-style dashboard for your income, savings, investments and spending, with macOS reminders.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js --open",
+    "serve": "node server.js",
+    "reminders:install": "node scripts/launch-agent.js install",
+    "reminders:uninstall": "node scripts/launch-agent.js uninstall",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
