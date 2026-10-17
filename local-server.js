@@ -1,7 +1,7 @@
 // GiveMeBucks — local server. Serves the dashboard and JSON API (lib/app.js),
 // stores data under ./data, and sends a macOS reminder when data is due.
 // Settings come from the environment or a .env file (see .env.example).
-// Zero dependencies: run with `node server.js` (or `npm start`).
+// Zero dependencies: run with `npm start` (node local-server.js).
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';

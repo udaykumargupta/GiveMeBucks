@@ -28,7 +28,7 @@ if (cmd === 'install') {
   <key>ProgramArguments</key>
   <array>
     <string>${esc(process.execPath)}</string>
-    <string>${esc(path.join(ROOT, 'server.js'))}</string>
+    <string>${esc(path.join(ROOT, 'local-server.js'))}</string>
   </array>
   <key>WorkingDirectory</key><string>${esc(ROOT)}</string>
   <key>RunAtLoad</key><true/>

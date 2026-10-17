@@ -147,7 +147,7 @@ test('rejects bad request bodies and keeps static files inside public/', async (
     const page = await s.call('GET', '/');
     assert.equal(page.status, 200);
     assert.match(page.text, /GiveMeBucks/);
-    for (const p of ['/..%2fserver.js', '/%2e%2e/server.js', '/js/../../server.js']) {
+    for (const p of ['/..%2flocal-server.js', '/%2e%2e/local-server.js', '/js/../../local-server.js']) {
       assert.notEqual((await s.call('GET', p)).status, 200, p);
     }
   } finally { await s.close(); }

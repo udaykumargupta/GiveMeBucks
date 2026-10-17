@@ -133,7 +133,7 @@ npm test     # calculation, sign-in, storage, API and Vercel tests (node:test)
 
 | File | Role |
 |---|---|
-| `server.js` | Local server: settings from `.env`, daily reminder scheduler |
+| `local-server.js` | Mac server (`npm start`): settings from `.env`, daily reminder scheduler. Not named `server.js` so Vercel doesn't mistake it for the cloud app |
 | `lib/app.js` | Request handler: static files, JSON API, sign-in routes (shared by the Mac server and Vercel) |
 | `lib/storage.js` | Where data lives: JSON files, or Neon Postgres when `DATABASE_URL` is set |
 | `api/index.js`, `vercel.json` | Vercel function entry point and routing |
