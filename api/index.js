@@ -4,7 +4,7 @@
 // are configured, it serves no data at all. Anyone with a Google account can
 // sign in (each gets a private dashboard) unless ALLOWED_EMAILS restricts it.
 import { createHandler } from '../lib/app.js';
-import { createGoogleVerifier, createSessions, parseAllowlist, MIN_SECRET_LENGTH } from '../lib/auth.js';
+import { createGoogleVerifier, createSessions, parseAllowlist, MIN_SECRET_LENGTH, SESSION_TTL_MS } from '../lib/auth.js';
 import { neonStorage, databaseUrl } from '../lib/storage.js';
 
 export function createVercelHandler(env = process.env) {
@@ -23,15 +23,13 @@ export function createVercelHandler(env = process.env) {
   const auth = ready
     ? {
       enabled: true, clientId, allow,
-      sessions: createSessions({ secret, ttlMs: Number(get('JWT_EXPIRATION_MS')) || 7 * 24 * 60 * 60 * 1000 }),
+      sessions: createSessions({ secret, ttlMs: Number(get('JWT_EXPIRATION_MS')) || SESSION_TTL_MS }),
       verifyGoogle: createGoogleVerifier({ clientId }),
     }
     : { enabled: false, clientId, allow };
-  // No macOS in the cloud; reminders are local-only for now.
-  const reminders = { kind: 'none', test: async () => false, status: () => ({}) };
   const storage = ready ? neonStorage(dbUrl) : { kind: 'database' };
 
-  return createHandler({ publicDir: null, auth, storage, reminders, requireAuth: true, setupMissing });
+  return createHandler({ publicDir: null, auth, storage, requireAuth: true, setupMissing });
 }
 
 let handler;

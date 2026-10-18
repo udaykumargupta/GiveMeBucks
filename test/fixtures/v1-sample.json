@@ -1,0 +1,2239 @@
+{
+ "rev": 0,
+ "accounts": [
+  {
+   "id": "hdfc",
+   "name": "HDFC Savings",
+   "kind": "bank",
+   "institution": "HDFC Bank"
+  },
+  {
+   "id": "sbi",
+   "name": "SBI Savings",
+   "kind": "bank",
+   "institution": "State Bank of India"
+  },
+  {
+   "id": "mf",
+   "name": "Mutual fund SIPs",
+   "kind": "mutual_fund",
+   "institution": "Groww",
+   "sip": {
+    "amount": 25000,
+    "day": 10
+   }
+  },
+  {
+   "id": "stocks",
+   "name": "Stock portfolio",
+   "kind": "stocks",
+   "institution": "Zerodha"
+  },
+  {
+   "id": "epf",
+   "name": "EPF",
+   "kind": "epf",
+   "institution": "EPFO"
+  },
+  {
+   "id": "gold",
+   "name": "Sovereign gold bonds",
+   "kind": "gold"
+  },
+  {
+   "id": "fd1",
+   "name": "SBI FD · 3 yr",
+   "kind": "fd",
+   "institution": "State Bank of India",
+   "fd": {
+    "principal": 200000,
+    "rate": 7.1,
+    "startDate": "2023-11-07",
+    "maturityDate": "2026-11-06"
+   }
+  },
+  {
+   "id": "fd2",
+   "name": "HDFC FD · 3 yr",
+   "kind": "fd",
+   "institution": "HDFC Bank",
+   "openingFromBank": true,
+   "fd": {
+    "principal": 150000,
+    "rate": 7.25,
+    "startDate": "2026-02-19",
+    "maturityDate": "2029-02-18"
+   }
+  }
+ ],
+ "snapshots": [
+  {
+   "id": "s2",
+   "accountId": "hdfc",
+   "date": "2024-09-01",
+   "value": 282124
+  },
+  {
+   "id": "s3",
+   "accountId": "sbi",
+   "date": "2024-09-01",
+   "value": 91416
+  },
+  {
+   "id": "s4",
+   "accountId": "mf",
+   "date": "2024-09-01",
+   "value": 131500,
+   "invested": 120000
+  },
+  {
+   "id": "s5",
+   "accountId": "stocks",
+   "date": "2024-09-01",
+   "value": 161000,
+   "invested": 150000
+  },
+  {
+   "id": "s6",
+   "accountId": "epf",
+   "date": "2024-09-01",
+   "value": 327408,
+   "invested": 314408
+  },
+  {
+   "id": "s7",
+   "accountId": "gold",
+   "date": "2024-09-01",
+   "value": 66500,
+   "invested": 60000
+  },
+  {
+   "id": "s9",
+   "accountId": "hdfc",
+   "date": "2024-09-08",
+   "value": 257894
+  },
+  {
+   "id": "s10",
+   "accountId": "sbi",
+   "date": "2024-09-08",
+   "value": 124014
+  },
+  {
+   "id": "s11",
+   "accountId": "hdfc",
+   "date": "2024-09-15",
+   "value": 207285
+  },
+  {
+   "id": "s12",
+   "accountId": "sbi",
+   "date": "2024-09-15",
+   "value": 136074
+  },
+  {
+   "id": "s13",
+   "accountId": "hdfc",
+   "date": "2024-09-22",
+   "value": 201421
+  },
+  {
+   "id": "s14",
+   "accountId": "sbi",
+   "date": "2024-09-22",
+   "value": 132166
+  },
+  {
+   "id": "s16",
+   "accountId": "hdfc",
+   "date": "2024-09-29",
+   "value": 195018
+  },
+  {
+   "id": "s17",
+   "accountId": "sbi",
+   "date": "2024-09-29",
+   "value": 128861
+  },
+  {
+   "id": "s19",
+   "accountId": "hdfc",
+   "date": "2024-10-06",
+   "value": 269131
+  },
+  {
+   "id": "s20",
+   "accountId": "sbi",
+   "date": "2024-10-06",
+   "value": 124936
+  },
+  {
+   "id": "s21",
+   "accountId": "mf",
+   "date": "2024-10-06",
+   "value": 166854,
+   "invested": 145000
+  },
+  {
+   "id": "s22",
+   "accountId": "epf",
+   "date": "2024-10-06",
+   "value": 339067,
+   "invested": 323816
+  },
+  {
+   "id": "s23",
+   "accountId": "stocks",
+   "date": "2024-10-06",
+   "value": 179814,
+   "invested": 150000
+  },
+  {
+   "id": "s24",
+   "accountId": "gold",
+   "date": "2024-10-06",
+   "value": 66028,
+   "invested": 60000
+  },
+  {
+   "id": "s25",
+   "accountId": "hdfc",
+   "date": "2024-10-13",
+   "value": 217071
+  },
+  {
+   "id": "s26",
+   "accountId": "sbi",
+   "date": "2024-10-13",
+   "value": 140229
+  },
+  {
+   "id": "s27",
+   "accountId": "hdfc",
+   "date": "2024-10-20",
+   "value": 210460
+  },
+  {
+   "id": "s28",
+   "accountId": "sbi",
+   "date": "2024-10-20",
+   "value": 131622
+  },
+  {
+   "id": "s29",
+   "accountId": "hdfc",
+   "date": "2024-10-27",
+   "value": 202880
+  },
+  {
+   "id": "s30",
+   "accountId": "sbi",
+   "date": "2024-10-27",
+   "value": 126569
+  },
+  {
+   "id": "s32",
+   "accountId": "hdfc",
+   "date": "2024-11-03",
+   "value": 294645
+  },
+  {
+   "id": "s33",
+   "accountId": "sbi",
+   "date": "2024-11-03",
+   "value": 122413
+  },
+  {
+   "id": "s34",
+   "accountId": "mf",
+   "date": "2024-11-03",
+   "value": 190677,
+   "invested": 170000
+  },
+  {
+   "id": "s35",
+   "accountId": "epf",
+   "date": "2024-11-03",
+   "value": 350806,
+   "invested": 333224
+  },
+  {
+   "id": "s36",
+   "accountId": "stocks",
+   "date": "2024-11-03",
+   "value": 174593,
+   "invested": 150000
+  },
+  {
+   "id": "s37",
+   "accountId": "hdfc",
+   "date": "2024-11-10",
+   "value": 244917
+  },
+  {
+   "id": "s38",
+   "accountId": "sbi",
+   "date": "2024-11-10",
+   "value": 117927
+  },
+  {
+   "id": "s39",
+   "accountId": "hdfc",
+   "date": "2024-11-17",
+   "value": 217946
+  },
+  {
+   "id": "s40",
+   "accountId": "sbi",
+   "date": "2024-11-17",
+   "value": 129079
+  },
+  {
+   "id": "s41",
+   "accountId": "hdfc",
+   "date": "2024-11-24",
+   "value": 212694
+  },
+  {
+   "id": "s42",
+   "accountId": "sbi",
+   "date": "2024-11-24",
+   "value": 125578
+  },
+  {
+   "id": "s44",
+   "accountId": "hdfc",
+   "date": "2024-12-01",
+   "value": 302398
+  },
+  {
+   "id": "s45",
+   "accountId": "sbi",
+   "date": "2024-12-01",
+   "value": 120047
+  },
+  {
+   "id": "s46",
+   "accountId": "mf",
+   "date": "2024-12-01",
+   "value": 203716,
+   "invested": 195000
+  },
+  {
+   "id": "s47",
+   "accountId": "epf",
+   "date": "2024-12-01",
+   "value": 362626,
+   "invested": 342632
+  },
+  {
+   "id": "s48",
+   "accountId": "stocks",
+   "date": "2024-12-01",
+   "value": 179094,
+   "invested": 150000
+  },
+  {
+   "id": "s49",
+   "accountId": "hdfc",
+   "date": "2024-12-08",
+   "value": 277840
+  },
+  {
+   "id": "s50",
+   "accountId": "sbi",
+   "date": "2024-12-08",
+   "value": 115676
+  },
+  {
+   "id": "s51",
+   "accountId": "hdfc",
+   "date": "2024-12-15",
+   "value": 226437
+  },
+  {
+   "id": "s52",
+   "accountId": "sbi",
+   "date": "2024-12-15",
+   "value": 127207
+  },
+  {
+   "id": "s53",
+   "accountId": "hdfc",
+   "date": "2024-12-22",
+   "value": 220206
+  },
+  {
+   "id": "s54",
+   "accountId": "sbi",
+   "date": "2024-12-22",
+   "value": 123053
+  },
+  {
+   "id": "s57",
+   "accountId": "hdfc",
+   "date": "2025-01-05",
+   "value": 286543
+  },
+  {
+   "id": "s58",
+   "accountId": "sbi",
+   "date": "2025-01-05",
+   "value": 114843
+  },
+  {
+   "id": "s59",
+   "accountId": "mf",
+   "date": "2025-01-05",
+   "value": 224315,
+   "invested": 220000
+  },
+  {
+   "id": "s60",
+   "accountId": "epf",
+   "date": "2025-01-05",
+   "value": 374527,
+   "invested": 352040
+  },
+  {
+   "id": "s61",
+   "accountId": "stocks",
+   "date": "2025-01-05",
+   "value": 179361,
+   "invested": 150000
+  },
+  {
+   "id": "s62",
+   "accountId": "gold",
+   "date": "2025-01-05",
+   "value": 61314,
+   "invested": 60000
+  },
+  {
+   "id": "s63",
+   "accountId": "hdfc",
+   "date": "2025-01-12",
+   "value": 235490
+  },
+  {
+   "id": "s64",
+   "accountId": "sbi",
+   "date": "2025-01-12",
+   "value": 130808
+  },
+  {
+   "id": "s65",
+   "accountId": "hdfc",
+   "date": "2025-01-26",
+   "value": 224401
+  },
+  {
+   "id": "s66",
+   "accountId": "sbi",
+   "date": "2025-01-26",
+   "value": 119215
+  },
+  {
+   "id": "s68",
+   "accountId": "hdfc",
+   "date": "2025-02-02",
+   "value": 316552
+  },
+  {
+   "id": "s69",
+   "accountId": "sbi",
+   "date": "2025-02-02",
+   "value": 115316
+  },
+  {
+   "id": "s70",
+   "accountId": "mf",
+   "date": "2025-02-02",
+   "value": 262968,
+   "invested": 245000
+  },
+  {
+   "id": "s71",
+   "accountId": "epf",
+   "date": "2025-02-02",
+   "value": 386510,
+   "invested": 361448
+  },
+  {
+   "id": "s72",
+   "accountId": "stocks",
+   "date": "2025-02-02",
+   "value": 191105,
+   "invested": 150000
+  },
+  {
+   "id": "s73",
+   "accountId": "hdfc",
+   "date": "2025-02-09",
+   "value": 292227
+  },
+  {
+   "id": "s74",
+   "accountId": "sbi",
+   "date": "2025-02-09",
+   "value": 111099
+  },
+  {
+   "id": "s75",
+   "accountId": "hdfc",
+   "date": "2025-02-16",
+   "value": 230743
+  },
+  {
+   "id": "s76",
+   "accountId": "sbi",
+   "date": "2025-02-16",
+   "value": 122417
+  },
+  {
+   "id": "s77",
+   "accountId": "hdfc",
+   "date": "2025-02-23",
+   "value": 224314
+  },
+  {
+   "id": "s78",
+   "accountId": "sbi",
+   "date": "2025-02-23",
+   "value": 118131
+  },
+  {
+   "id": "s80",
+   "accountId": "hdfc",
+   "date": "2025-03-02",
+   "value": 316614
+  },
+  {
+   "id": "s81",
+   "accountId": "sbi",
+   "date": "2025-03-02",
+   "value": 114331
+  },
+  {
+   "id": "s82",
+   "accountId": "mf",
+   "date": "2025-03-02",
+   "value": 295752,
+   "invested": 270000
+  },
+  {
+   "id": "s83",
+   "accountId": "epf",
+   "date": "2025-03-02",
+   "value": 398575,
+   "invested": 370856
+  },
+  {
+   "id": "s84",
+   "accountId": "stocks",
+   "date": "2025-03-02",
+   "value": 194919,
+   "invested": 150000
+  },
+  {
+   "id": "s85",
+   "accountId": "hdfc",
+   "date": "2025-03-09",
+   "value": 291761
+  },
+  {
+   "id": "s86",
+   "accountId": "sbi",
+   "date": "2025-03-09",
+   "value": 109762
+  },
+  {
+   "id": "s87",
+   "accountId": "hdfc",
+   "date": "2025-03-16",
+   "value": 240645
+  },
+  {
+   "id": "s88",
+   "accountId": "sbi",
+   "date": "2025-03-16",
+   "value": 121485
+  },
+  {
+   "id": "s90",
+   "accountId": "hdfc",
+   "date": "2025-03-23",
+   "value": 352352
+  },
+  {
+   "id": "s91",
+   "accountId": "sbi",
+   "date": "2025-03-23",
+   "value": 117556
+  },
+  {
+   "id": "s93",
+   "accountId": "hdfc",
+   "date": "2025-03-30",
+   "value": 346702
+  },
+  {
+   "id": "s94",
+   "accountId": "sbi",
+   "date": "2025-03-30",
+   "value": 114653
+  },
+  {
+   "id": "s96",
+   "accountId": "hdfc",
+   "date": "2025-04-06",
+   "value": 431278
+  },
+  {
+   "id": "s97",
+   "accountId": "sbi",
+   "date": "2025-04-06",
+   "value": 109837
+  },
+  {
+   "id": "s98",
+   "accountId": "mf",
+   "date": "2025-04-06",
+   "value": 321588,
+   "invested": 295000
+  },
+  {
+   "id": "s99",
+   "accountId": "epf",
+   "date": "2025-04-06",
+   "value": 411856,
+   "invested": 381397
+  },
+  {
+   "id": "s100",
+   "accountId": "stocks",
+   "date": "2025-04-06",
+   "value": 215595,
+   "invested": 150000
+  },
+  {
+   "id": "s101",
+   "accountId": "gold",
+   "date": "2025-04-06",
+   "value": 65460,
+   "invested": 60000
+  },
+  {
+   "id": "s102",
+   "accountId": "hdfc",
+   "date": "2025-04-13",
+   "value": 379714
+  },
+  {
+   "id": "s103",
+   "accountId": "sbi",
+   "date": "2025-04-13",
+   "value": 125461
+  },
+  {
+   "id": "s104",
+   "accountId": "hdfc",
+   "date": "2025-04-20",
+   "value": 375016
+  },
+  {
+   "id": "s105",
+   "accountId": "sbi",
+   "date": "2025-04-20",
+   "value": 118129
+  },
+  {
+   "id": "s106",
+   "accountId": "hdfc",
+   "date": "2025-04-27",
+   "value": 369516
+  },
+  {
+   "id": "s107",
+   "accountId": "sbi",
+   "date": "2025-04-27",
+   "value": 114462
+  },
+  {
+   "id": "s109",
+   "accountId": "hdfc",
+   "date": "2025-05-04",
+   "value": 473548
+  },
+  {
+   "id": "s110",
+   "accountId": "sbi",
+   "date": "2025-05-04",
+   "value": 110617
+  },
+  {
+   "id": "s111",
+   "accountId": "mf",
+   "date": "2025-05-04",
+   "value": 351141,
+   "invested": 320000
+  },
+  {
+   "id": "s112",
+   "accountId": "epf",
+   "date": "2025-05-04",
+   "value": 425228,
+   "invested": 391938
+  },
+  {
+   "id": "s113",
+   "accountId": "stocks",
+   "date": "2025-05-04",
+   "value": 214746,
+   "invested": 150000
+  },
+  {
+   "id": "s114",
+   "accountId": "hdfc",
+   "date": "2025-05-11",
+   "value": 424094
+  },
+  {
+   "id": "s115",
+   "accountId": "sbi",
+   "date": "2025-05-11",
+   "value": 106315
+  },
+  {
+   "id": "s116",
+   "accountId": "hdfc",
+   "date": "2025-05-18",
+   "value": 398005
+  },
+  {
+   "id": "s117",
+   "accountId": "sbi",
+   "date": "2025-05-18",
+   "value": 118055
+  },
+  {
+   "id": "s119",
+   "accountId": "mf",
+   "date": "2025-06-01",
+   "value": 374270,
+   "invested": 345000
+  },
+  {
+   "id": "s120",
+   "accountId": "epf",
+   "date": "2025-06-01",
+   "value": 438693,
+   "invested": 402478
+  },
+  {
+   "id": "s121",
+   "accountId": "stocks",
+   "date": "2025-06-01",
+   "value": 201675,
+   "invested": 150000
+  },
+  {
+   "id": "s122",
+   "accountId": "hdfc",
+   "date": "2025-06-08",
+   "value": 471021
+  },
+  {
+   "id": "s123",
+   "accountId": "sbi",
+   "date": "2025-06-08",
+   "value": 105532
+  },
+  {
+   "id": "s124",
+   "accountId": "hdfc",
+   "date": "2025-06-15",
+   "value": 419539
+  },
+  {
+   "id": "s125",
+   "accountId": "sbi",
+   "date": "2025-06-15",
+   "value": 117011
+  },
+  {
+   "id": "s126",
+   "accountId": "hdfc",
+   "date": "2025-06-22",
+   "value": 413311
+  },
+  {
+   "id": "s127",
+   "accountId": "sbi",
+   "date": "2025-06-22",
+   "value": 112859
+  },
+  {
+   "id": "s129",
+   "accountId": "hdfc",
+   "date": "2025-06-29",
+   "value": 407409
+  },
+  {
+   "id": "s130",
+   "accountId": "sbi",
+   "date": "2025-06-29",
+   "value": 109748
+  },
+  {
+   "id": "s132",
+   "accountId": "hdfc",
+   "date": "2025-07-06",
+   "value": 494350
+  },
+  {
+   "id": "s133",
+   "accountId": "sbi",
+   "date": "2025-07-06",
+   "value": 106509
+  },
+  {
+   "id": "s134",
+   "accountId": "mf",
+   "date": "2025-07-06",
+   "value": 392436,
+   "invested": 370000
+  },
+  {
+   "id": "s135",
+   "accountId": "epf",
+   "date": "2025-07-06",
+   "value": 452249,
+   "invested": 413019
+  },
+  {
+   "id": "s136",
+   "accountId": "stocks",
+   "date": "2025-07-06",
+   "value": 208925,
+   "invested": 150000
+  },
+  {
+   "id": "s137",
+   "accountId": "gold",
+   "date": "2025-07-06",
+   "value": 68305,
+   "invested": 60000
+  },
+  {
+   "id": "s138",
+   "accountId": "hdfc",
+   "date": "2025-07-13",
+   "value": 443428
+  },
+  {
+   "id": "s139",
+   "accountId": "sbi",
+   "date": "2025-07-13",
+   "value": 122561
+  },
+  {
+   "id": "s140",
+   "accountId": "hdfc",
+   "date": "2025-07-20",
+   "value": 437784
+  },
+  {
+   "id": "s141",
+   "accountId": "sbi",
+   "date": "2025-07-20",
+   "value": 114598
+  },
+  {
+   "id": "s142",
+   "accountId": "hdfc",
+   "date": "2025-07-27",
+   "value": 430156
+  },
+  {
+   "id": "s143",
+   "accountId": "sbi",
+   "date": "2025-07-27",
+   "value": 109513
+  },
+  {
+   "id": "s145",
+   "accountId": "hdfc",
+   "date": "2025-08-03",
+   "value": 532126
+  },
+  {
+   "id": "s146",
+   "accountId": "sbi",
+   "date": "2025-08-03",
+   "value": 104293
+  },
+  {
+   "id": "s147",
+   "accountId": "mf",
+   "date": "2025-08-03",
+   "value": 439282,
+   "invested": 395000
+  },
+  {
+   "id": "s148",
+   "accountId": "epf",
+   "date": "2025-08-03",
+   "value": 465899,
+   "invested": 423560
+  },
+  {
+   "id": "s149",
+   "accountId": "stocks",
+   "date": "2025-08-03",
+   "value": 226627,
+   "invested": 150000
+  },
+  {
+   "id": "s150",
+   "accountId": "hdfc",
+   "date": "2025-08-10",
+   "value": 482996
+  },
+  {
+   "id": "s151",
+   "accountId": "sbi",
+   "date": "2025-08-10",
+   "value": 100206
+  },
+  {
+   "id": "s152",
+   "accountId": "hdfc",
+   "date": "2025-08-24",
+   "value": 416937
+  },
+  {
+   "id": "s153",
+   "accountId": "sbi",
+   "date": "2025-08-24",
+   "value": 107665
+  },
+  {
+   "id": "s154",
+   "accountId": "hdfc",
+   "date": "2025-08-31",
+   "value": 411449
+  },
+  {
+   "id": "s155",
+   "accountId": "sbi",
+   "date": "2025-08-31",
+   "value": 104006
+  },
+  {
+   "id": "s157",
+   "accountId": "mf",
+   "date": "2025-09-07",
+   "value": 467574,
+   "invested": 420000
+  },
+  {
+   "id": "s158",
+   "accountId": "epf",
+   "date": "2025-09-07",
+   "value": 479643,
+   "invested": 434101
+  },
+  {
+   "id": "s159",
+   "accountId": "stocks",
+   "date": "2025-09-07",
+   "value": 221150,
+   "invested": 150000
+  },
+  {
+   "id": "s160",
+   "accountId": "hdfc",
+   "date": "2025-09-14",
+   "value": 445749
+  },
+  {
+   "id": "s161",
+   "accountId": "sbi",
+   "date": "2025-09-14",
+   "value": 115673
+  },
+  {
+   "id": "s162",
+   "accountId": "hdfc",
+   "date": "2025-09-21",
+   "value": 438832
+  },
+  {
+   "id": "s163",
+   "accountId": "sbi",
+   "date": "2025-09-21",
+   "value": 106862
+  },
+  {
+   "id": "s166",
+   "accountId": "hdfc",
+   "date": "2025-09-28",
+   "value": 432383
+  },
+  {
+   "id": "s167",
+   "accountId": "sbi",
+   "date": "2025-09-28",
+   "value": 138110
+  },
+  {
+   "id": "s169",
+   "accountId": "hdfc",
+   "date": "2025-10-05",
+   "value": 519119
+  },
+  {
+   "id": "s170",
+   "accountId": "sbi",
+   "date": "2025-10-05",
+   "value": 134735
+  },
+  {
+   "id": "s171",
+   "accountId": "mf",
+   "date": "2025-10-05",
+   "value": 476345,
+   "invested": 445000
+  },
+  {
+   "id": "s172",
+   "accountId": "epf",
+   "date": "2025-10-05",
+   "value": 493482,
+   "invested": 444642
+  },
+  {
+   "id": "s173",
+   "accountId": "stocks",
+   "date": "2025-10-05",
+   "value": 236491,
+   "invested": 150000
+  },
+  {
+   "id": "s174",
+   "accountId": "gold",
+   "date": "2025-10-05",
+   "value": 66158,
+   "invested": 60000
+  },
+  {
+   "id": "s175",
+   "accountId": "hdfc",
+   "date": "2025-10-12",
+   "value": 468470
+  },
+  {
+   "id": "s176",
+   "accountId": "sbi",
+   "date": "2025-10-12",
+   "value": 150969
+  },
+  {
+   "id": "s177",
+   "accountId": "hdfc",
+   "date": "2025-10-19",
+   "value": 461921
+  },
+  {
+   "id": "s178",
+   "accountId": "sbi",
+   "date": "2025-10-19",
+   "value": 142403
+  },
+  {
+   "id": "s179",
+   "accountId": "hdfc",
+   "date": "2025-10-26",
+   "value": 455296
+  },
+  {
+   "id": "s180",
+   "accountId": "sbi",
+   "date": "2025-10-26",
+   "value": 137986
+  },
+  {
+   "id": "s182",
+   "accountId": "hdfc",
+   "date": "2025-11-02",
+   "value": 558880
+  },
+  {
+   "id": "s183",
+   "accountId": "sbi",
+   "date": "2025-11-02",
+   "value": 133842
+  },
+  {
+   "id": "s184",
+   "accountId": "mf",
+   "date": "2025-11-02",
+   "value": 502426,
+   "invested": 470000
+  },
+  {
+   "id": "s185",
+   "accountId": "epf",
+   "date": "2025-11-02",
+   "value": 507415,
+   "invested": 455182
+  },
+  {
+   "id": "s186",
+   "accountId": "stocks",
+   "date": "2025-11-02",
+   "value": 252639,
+   "invested": 150000
+  },
+  {
+   "id": "s187",
+   "accountId": "hdfc",
+   "date": "2025-11-09",
+   "value": 534789
+  },
+  {
+   "id": "s188",
+   "accountId": "sbi",
+   "date": "2025-11-09",
+   "value": 129781
+  },
+  {
+   "id": "s189",
+   "accountId": "hdfc",
+   "date": "2025-11-16",
+   "value": 483021
+  },
+  {
+   "id": "s190",
+   "accountId": "sbi",
+   "date": "2025-11-16",
+   "value": 141069
+  },
+  {
+   "id": "s192",
+   "accountId": "hdfc",
+   "date": "2025-11-30",
+   "value": 469898
+  },
+  {
+   "id": "s193",
+   "accountId": "sbi",
+   "date": "2025-11-30",
+   "value": 164918
+  },
+  {
+   "id": "s195",
+   "accountId": "hdfc",
+   "date": "2025-12-07",
+   "value": 556119
+  },
+  {
+   "id": "s196",
+   "accountId": "sbi",
+   "date": "2025-12-07",
+   "value": 161199
+  },
+  {
+   "id": "s197",
+   "accountId": "mf",
+   "date": "2025-12-07",
+   "value": 507457,
+   "invested": 495000
+  },
+  {
+   "id": "s198",
+   "accountId": "epf",
+   "date": "2025-12-07",
+   "value": 521444,
+   "invested": 465723
+  },
+  {
+   "id": "s199",
+   "accountId": "stocks",
+   "date": "2025-12-07",
+   "value": 262749,
+   "invested": 150000
+  },
+  {
+   "id": "s200",
+   "accountId": "hdfc",
+   "date": "2025-12-14",
+   "value": 503567
+  },
+  {
+   "id": "s201",
+   "accountId": "sbi",
+   "date": "2025-12-14",
+   "value": 176165
+  },
+  {
+   "id": "s202",
+   "accountId": "hdfc",
+   "date": "2025-12-21",
+   "value": 498270
+  },
+  {
+   "id": "s203",
+   "accountId": "sbi",
+   "date": "2025-12-21",
+   "value": 168433
+  },
+  {
+   "id": "s205",
+   "accountId": "hdfc",
+   "date": "2025-12-28",
+   "value": 492565
+  },
+  {
+   "id": "s206",
+   "accountId": "sbi",
+   "date": "2025-12-28",
+   "value": 165864
+  },
+  {
+   "id": "s209",
+   "accountId": "hdfc",
+   "date": "2026-01-04",
+   "value": 596421
+  },
+  {
+   "id": "s210",
+   "accountId": "sbi",
+   "date": "2026-01-04",
+   "value": 203977
+  },
+  {
+   "id": "s211",
+   "accountId": "mf",
+   "date": "2026-01-04",
+   "value": 570303,
+   "invested": 520000
+  },
+  {
+   "id": "s212",
+   "accountId": "epf",
+   "date": "2026-01-04",
+   "value": 535570,
+   "invested": 476264
+  },
+  {
+   "id": "s213",
+   "accountId": "stocks",
+   "date": "2026-01-04",
+   "value": 273363,
+   "invested": 150000
+  },
+  {
+   "id": "s214",
+   "accountId": "gold",
+   "date": "2026-01-04",
+   "value": 73584,
+   "invested": 60000
+  },
+  {
+   "id": "s215",
+   "accountId": "hdfc",
+   "date": "2026-01-11",
+   "value": 547681
+  },
+  {
+   "id": "s216",
+   "accountId": "sbi",
+   "date": "2026-01-11",
+   "value": 200150
+  },
+  {
+   "id": "s218",
+   "accountId": "hdfc",
+   "date": "2026-01-18",
+   "value": 520769
+  },
+  {
+   "id": "s219",
+   "accountId": "sbi",
+   "date": "2026-01-18",
+   "value": 232599
+  },
+  {
+   "id": "s220",
+   "accountId": "hdfc",
+   "date": "2026-01-25",
+   "value": 514593
+  },
+  {
+   "id": "s221",
+   "accountId": "sbi",
+   "date": "2026-01-25",
+   "value": 228482
+  },
+  {
+   "id": "s223",
+   "accountId": "hdfc",
+   "date": "2026-02-01",
+   "value": 619750
+  },
+  {
+   "id": "s224",
+   "accountId": "sbi",
+   "date": "2026-02-01",
+   "value": 225387
+  },
+  {
+   "id": "s225",
+   "accountId": "mf",
+   "date": "2026-02-01",
+   "value": 591274,
+   "invested": 545000
+  },
+  {
+   "id": "s226",
+   "accountId": "epf",
+   "date": "2026-02-01",
+   "value": 549793,
+   "invested": 486805
+  },
+  {
+   "id": "s227",
+   "accountId": "stocks",
+   "date": "2026-02-01",
+   "value": 256689,
+   "invested": 150000
+  },
+  {
+   "id": "s229",
+   "accountId": "hdfc",
+   "date": "2026-02-08",
+   "value": 595415
+  },
+  {
+   "id": "s230",
+   "accountId": "sbi",
+   "date": "2026-02-08",
+   "value": 253181
+  },
+  {
+   "id": "s231",
+   "accountId": "hdfc",
+   "date": "2026-02-22",
+   "value": 388472
+  },
+  {
+   "id": "s232",
+   "accountId": "sbi",
+   "date": "2026-02-22",
+   "value": 261019
+  },
+  {
+   "id": "s234",
+   "accountId": "hdfc",
+   "date": "2026-03-01",
+   "value": 492747
+  },
+  {
+   "id": "s235",
+   "accountId": "sbi",
+   "date": "2026-03-01",
+   "value": 257336
+  },
+  {
+   "id": "s236",
+   "accountId": "mf",
+   "date": "2026-03-01",
+   "value": 617010,
+   "invested": 570000
+  },
+  {
+   "id": "s237",
+   "accountId": "epf",
+   "date": "2026-03-01",
+   "value": 564114,
+   "invested": 497346
+  },
+  {
+   "id": "s238",
+   "accountId": "stocks",
+   "date": "2026-03-01",
+   "value": 285094,
+   "invested": 150000
+  },
+  {
+   "id": "s239",
+   "accountId": "hdfc",
+   "date": "2026-03-08",
+   "value": 468581
+  },
+  {
+   "id": "s240",
+   "accountId": "sbi",
+   "date": "2026-03-08",
+   "value": 253225
+  },
+  {
+   "id": "s241",
+   "accountId": "hdfc",
+   "date": "2026-03-15",
+   "value": 418859
+  },
+  {
+   "id": "s242",
+   "accountId": "sbi",
+   "date": "2026-03-15",
+   "value": 265877
+  },
+  {
+   "id": "s244",
+   "accountId": "hdfc",
+   "date": "2026-03-22",
+   "value": 545270
+  },
+  {
+   "id": "s245",
+   "accountId": "sbi",
+   "date": "2026-03-22",
+   "value": 262311
+  },
+  {
+   "id": "s247",
+   "accountId": "hdfc",
+   "date": "2026-03-29",
+   "value": 539743
+  },
+  {
+   "id": "s248",
+   "accountId": "sbi",
+   "date": "2026-03-29",
+   "value": 260572
+  },
+  {
+   "id": "s250",
+   "accountId": "hdfc",
+   "date": "2026-04-05",
+   "value": 638474
+  },
+  {
+   "id": "s251",
+   "accountId": "sbi",
+   "date": "2026-04-05",
+   "value": 256459
+  },
+  {
+   "id": "s252",
+   "accountId": "mf",
+   "date": "2026-04-05",
+   "value": 629634,
+   "invested": 595000
+  },
+  {
+   "id": "s253",
+   "accountId": "epf",
+   "date": "2026-04-05",
+   "value": 579790,
+   "invested": 509144
+  },
+  {
+   "id": "s254",
+   "accountId": "stocks",
+   "date": "2026-04-05",
+   "value": 262414,
+   "invested": 150000
+  },
+  {
+   "id": "s255",
+   "accountId": "gold",
+   "date": "2026-04-05",
+   "value": 76793,
+   "invested": 60000
+  },
+  {
+   "id": "s256",
+   "accountId": "hdfc",
+   "date": "2026-04-12",
+   "value": 587325
+  },
+  {
+   "id": "s257",
+   "accountId": "sbi",
+   "date": "2026-04-12",
+   "value": 272360
+  },
+  {
+   "id": "s258",
+   "accountId": "hdfc",
+   "date": "2026-04-19",
+   "value": 581409
+  },
+  {
+   "id": "s259",
+   "accountId": "sbi",
+   "date": "2026-04-19",
+   "value": 264216
+  },
+  {
+   "id": "s260",
+   "accountId": "hdfc",
+   "date": "2026-04-26",
+   "value": 575716
+  },
+  {
+   "id": "s261",
+   "accountId": "sbi",
+   "date": "2026-04-26",
+   "value": 260420
+  },
+  {
+   "id": "s263",
+   "accountId": "hdfc",
+   "date": "2026-05-03",
+   "value": 692129
+  },
+  {
+   "id": "s264",
+   "accountId": "sbi",
+   "date": "2026-05-03",
+   "value": 256096
+  },
+  {
+   "id": "s265",
+   "accountId": "mf",
+   "date": "2026-05-03",
+   "value": 687287,
+   "invested": 620000
+  },
+  {
+   "id": "s266",
+   "accountId": "epf",
+   "date": "2026-05-03",
+   "value": 595575,
+   "invested": 520942
+  },
+  {
+   "id": "s267",
+   "accountId": "stocks",
+   "date": "2026-05-03",
+   "value": 264771,
+   "invested": 150000
+  },
+  {
+   "id": "s268",
+   "accountId": "hdfc",
+   "date": "2026-05-17",
+   "value": 591045
+  },
+  {
+   "id": "s269",
+   "accountId": "sbi",
+   "date": "2026-05-17",
+   "value": 263090
+  },
+  {
+   "id": "s270",
+   "accountId": "hdfc",
+   "date": "2026-05-24",
+   "value": 584212
+  },
+  {
+   "id": "s271",
+   "accountId": "sbi",
+   "date": "2026-05-24",
+   "value": 258534
+  },
+  {
+   "id": "s272",
+   "accountId": "hdfc",
+   "date": "2026-05-31",
+   "value": 576874
+  },
+  {
+   "id": "s273",
+   "accountId": "sbi",
+   "date": "2026-05-31",
+   "value": 253642
+  },
+  {
+   "id": "s275",
+   "accountId": "hdfc",
+   "date": "2026-06-07",
+   "value": 675142
+  },
+  {
+   "id": "s276",
+   "accountId": "sbi",
+   "date": "2026-06-07",
+   "value": 249221
+  },
+  {
+   "id": "s277",
+   "accountId": "mf",
+   "date": "2026-06-07",
+   "value": 658097,
+   "invested": 645000
+  },
+  {
+   "id": "s278",
+   "accountId": "epf",
+   "date": "2026-06-07",
+   "value": 611468,
+   "invested": 532741
+  },
+  {
+   "id": "s279",
+   "accountId": "stocks",
+   "date": "2026-06-07",
+   "value": 292200,
+   "invested": 150000
+  },
+  {
+   "id": "s280",
+   "accountId": "hdfc",
+   "date": "2026-06-14",
+   "value": 624025
+  },
+  {
+   "id": "s281",
+   "accountId": "sbi",
+   "date": "2026-06-14",
+   "value": 265143
+  },
+  {
+   "id": "s282",
+   "accountId": "hdfc",
+   "date": "2026-06-21",
+   "value": 618298
+  },
+  {
+   "id": "s283",
+   "accountId": "sbi",
+   "date": "2026-06-21",
+   "value": 257125
+  },
+  {
+   "id": "s286",
+   "accountId": "hdfc",
+   "date": "2026-06-28",
+   "value": 610539
+  },
+  {
+   "id": "s287",
+   "accountId": "sbi",
+   "date": "2026-06-28",
+   "value": 274254
+  },
+  {
+   "id": "s289",
+   "accountId": "hdfc",
+   "date": "2026-07-05",
+   "value": 709531
+  },
+  {
+   "id": "s290",
+   "accountId": "sbi",
+   "date": "2026-07-05",
+   "value": 270316
+  },
+  {
+   "id": "s291",
+   "accountId": "mf",
+   "date": "2026-07-05",
+   "value": 637906,
+   "invested": 670000
+  },
+  {
+   "id": "s292",
+   "accountId": "epf",
+   "date": "2026-07-05",
+   "value": 627470,
+   "invested": 544539
+  },
+  {
+   "id": "s293",
+   "accountId": "stocks",
+   "date": "2026-07-05",
+   "value": 279832,
+   "invested": 150000
+  },
+  {
+   "id": "s294",
+   "accountId": "gold",
+   "date": "2026-07-05",
+   "value": 73384,
+   "invested": 60000
+  },
+  {
+   "id": "s295",
+   "accountId": "hdfc",
+   "date": "2026-07-12",
+   "value": 657117
+  },
+  {
+   "id": "s296",
+   "accountId": "sbi",
+   "date": "2026-07-12",
+   "value": 285373
+  },
+  {
+   "id": "s297",
+   "accountId": "hdfc",
+   "date": "2026-07-19",
+   "value": 652198
+  },
+  {
+   "id": "s298",
+   "accountId": "sbi",
+   "date": "2026-07-19",
+   "value": 277894
+  },
+  {
+   "id": "s299",
+   "accountId": "hdfc",
+   "date": "2026-07-26",
+   "value": 632839
+  },
+  {
+   "id": "s300",
+   "accountId": "sbi",
+   "date": "2026-07-26",
+   "value": 273056
+  },
+  {
+   "id": "s302",
+   "accountId": "hdfc",
+   "date": "2026-08-02",
+   "value": 750382
+  },
+  {
+   "id": "s303",
+   "accountId": "sbi",
+   "date": "2026-08-02",
+   "value": 269485
+  },
+  {
+   "id": "s304",
+   "accountId": "mf",
+   "date": "2026-08-02",
+   "value": 683466,
+   "invested": 695000
+  },
+  {
+   "id": "s305",
+   "accountId": "epf",
+   "date": "2026-08-02",
+   "value": 643582,
+   "invested": 556338
+  },
+  {
+   "id": "s306",
+   "accountId": "stocks",
+   "date": "2026-08-02",
+   "value": 275780,
+   "invested": 150000
+  },
+  {
+   "id": "s307",
+   "accountId": "hdfc",
+   "date": "2026-08-09",
+   "value": 726514
+  },
+  {
+   "id": "s308",
+   "accountId": "sbi",
+   "date": "2026-08-09",
+   "value": 265572
+  },
+  {
+   "id": "s309",
+   "accountId": "hdfc",
+   "date": "2026-08-16",
+   "value": 675377
+  },
+  {
+   "id": "s310",
+   "accountId": "sbi",
+   "date": "2026-08-16",
+   "value": 277281
+  },
+  {
+   "id": "s311",
+   "accountId": "hdfc",
+   "date": "2026-08-23",
+   "value": 668730
+  },
+  {
+   "id": "s312",
+   "accountId": "sbi",
+   "date": "2026-08-23",
+   "value": 272850
+  },
+  {
+   "id": "s313",
+   "accountId": "hdfc",
+   "date": "2026-08-30",
+   "value": 662383
+  },
+  {
+   "id": "s314",
+   "accountId": "sbi",
+   "date": "2026-08-30",
+   "value": 268619
+  },
+  {
+   "id": "s316",
+   "accountId": "hdfc",
+   "date": "2026-09-06",
+   "value": 762135
+  },
+  {
+   "id": "s317",
+   "accountId": "sbi",
+   "date": "2026-09-06",
+   "value": 265186
+  },
+  {
+   "id": "s318",
+   "accountId": "mf",
+   "date": "2026-09-06",
+   "value": 748489,
+   "invested": 720000
+  },
+  {
+   "id": "s319",
+   "accountId": "epf",
+   "date": "2026-09-06",
+   "value": 659805,
+   "invested": 568136
+  },
+  {
+   "id": "s320",
+   "accountId": "stocks",
+   "date": "2026-09-06",
+   "value": 245406,
+   "invested": 150000
+  },
+  {
+   "id": "s321",
+   "accountId": "hdfc",
+   "date": "2026-09-13",
+   "value": 692391
+  },
+  {
+   "id": "s322",
+   "accountId": "sbi",
+   "date": "2026-09-13",
+   "value": 280079
+  },
+  {
+   "id": "s323",
+   "accountId": "hdfc",
+   "date": "2026-09-20",
+   "value": 685611
+  },
+  {
+   "id": "s324",
+   "accountId": "sbi",
+   "date": "2026-09-20",
+   "value": 271359
+  },
+  {
+   "id": "s325",
+   "accountId": "hdfc",
+   "date": "2026-09-27",
+   "value": 677976
+  },
+  {
+   "id": "s326",
+   "accountId": "sbi",
+   "date": "2026-09-27",
+   "value": 266269
+  },
+  {
+   "id": "s329",
+   "accountId": "hdfc",
+   "date": "2026-10-04",
+   "value": 794161
+  },
+  {
+   "id": "s330",
+   "accountId": "sbi",
+   "date": "2026-10-04",
+   "value": 263786
+  },
+  {
+   "id": "s331",
+   "accountId": "mf",
+   "date": "2026-10-04",
+   "value": 800418,
+   "invested": 745000
+  },
+  {
+   "id": "s332",
+   "accountId": "epf",
+   "date": "2026-10-04",
+   "value": 676140,
+   "invested": 579934
+  },
+  {
+   "id": "s333",
+   "accountId": "gold",
+   "date": "2026-10-04",
+   "value": 71677,
+   "invested": 60000
+  },
+  {
+   "id": "s334",
+   "accountId": "hdfc",
+   "date": "2026-10-11",
+   "value": 744403
+  },
+  {
+   "id": "s335",
+   "accountId": "sbi",
+   "date": "2026-10-11",
+   "value": 259281
+  }
+ ],
+ "income": [
+  {
+   "id": "i1",
+   "date": "2024-09-01",
+   "month": "2024-09",
+   "amount": 98000,
+   "source": "Salary"
+  },
+  {
+   "id": "i8",
+   "date": "2024-09-04",
+   "month": "2024-09",
+   "amount": 36751,
+   "source": "Freelance",
+   "note": "Side project"
+  },
+  {
+   "id": "i15",
+   "date": "2024-09-28",
+   "month": "2024-09",
+   "amount": 964,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i18",
+   "date": "2024-10-01",
+   "month": "2024-10",
+   "amount": 98000,
+   "source": "Salary"
+  },
+  {
+   "id": "i31",
+   "date": "2024-11-01",
+   "month": "2024-11",
+   "amount": 98000,
+   "source": "Salary"
+  },
+  {
+   "id": "i43",
+   "date": "2024-12-01",
+   "month": "2024-12",
+   "amount": 98000,
+   "source": "Salary"
+  },
+  {
+   "id": "i55",
+   "date": "2024-12-28",
+   "month": "2024-12",
+   "amount": 899,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i56",
+   "date": "2025-01-01",
+   "month": "2025-01",
+   "amount": 98000,
+   "source": "Salary"
+  },
+  {
+   "id": "i67",
+   "date": "2025-02-01",
+   "month": "2025-02",
+   "amount": 98000,
+   "source": "Salary"
+  },
+  {
+   "id": "i79",
+   "date": "2025-03-01",
+   "month": "2025-03",
+   "amount": 98000,
+   "source": "Salary"
+  },
+  {
+   "id": "i89",
+   "date": "2025-03-20",
+   "month": "2025-03",
+   "amount": 117600,
+   "source": "Bonus",
+   "note": "Annual performance bonus"
+  },
+  {
+   "id": "i92",
+   "date": "2025-03-28",
+   "month": "2025-03",
+   "amount": 864,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i95",
+   "date": "2025-04-01",
+   "month": "2025-04",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i108",
+   "date": "2025-05-01",
+   "month": "2025-05",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i118",
+   "date": "2025-06-01",
+   "month": "2025-06",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i128",
+   "date": "2025-06-28",
+   "month": "2025-06",
+   "amount": 824,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i131",
+   "date": "2025-07-01",
+   "month": "2025-07",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i144",
+   "date": "2025-08-01",
+   "month": "2025-08",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i156",
+   "date": "2025-09-01",
+   "month": "2025-09",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i164",
+   "date": "2025-09-24",
+   "month": "2025-09",
+   "amount": 34520,
+   "source": "Freelance",
+   "note": "Side project"
+  },
+  {
+   "id": "i165",
+   "date": "2025-09-28",
+   "month": "2025-09",
+   "amount": 1028,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i168",
+   "date": "2025-10-01",
+   "month": "2025-10",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i181",
+   "date": "2025-11-01",
+   "month": "2025-11",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i191",
+   "date": "2025-11-26",
+   "month": "2025-11",
+   "amount": 32598,
+   "source": "Freelance",
+   "note": "Side project"
+  },
+  {
+   "id": "i194",
+   "date": "2025-12-01",
+   "month": "2025-12",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i204",
+   "date": "2025-12-28",
+   "month": "2025-12",
+   "amount": 1235,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i207",
+   "date": "2026-01-01",
+   "month": "2026-01",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i208",
+   "date": "2026-01-01",
+   "month": "2026-01",
+   "amount": 42076,
+   "source": "Freelance",
+   "note": "Side project"
+  },
+  {
+   "id": "i217",
+   "date": "2026-01-18",
+   "month": "2026-01",
+   "amount": 21257,
+   "source": "Freelance",
+   "note": "Side project"
+  },
+  {
+   "id": "i222",
+   "date": "2026-02-01",
+   "month": "2026-02",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i228",
+   "date": "2026-02-03",
+   "month": "2026-02",
+   "amount": 32018,
+   "source": "Freelance",
+   "note": "Side project"
+  },
+  {
+   "id": "i233",
+   "date": "2026-03-01",
+   "month": "2026-03",
+   "amount": 109800,
+   "source": "Salary"
+  },
+  {
+   "id": "i243",
+   "date": "2026-03-20",
+   "month": "2026-03",
+   "amount": 131760,
+   "source": "Bonus",
+   "note": "Annual performance bonus"
+  },
+  {
+   "id": "i246",
+   "date": "2026-03-28",
+   "month": "2026-03",
+   "amount": 1945,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i249",
+   "date": "2026-04-01",
+   "month": "2026-04",
+   "amount": 122900,
+   "source": "Salary"
+  },
+  {
+   "id": "i262",
+   "date": "2026-05-01",
+   "month": "2026-05",
+   "amount": 122900,
+   "source": "Salary"
+  },
+  {
+   "id": "i274",
+   "date": "2026-06-01",
+   "month": "2026-06",
+   "amount": 122900,
+   "source": "Salary"
+  },
+  {
+   "id": "i284",
+   "date": "2026-06-25",
+   "month": "2026-06",
+   "amount": 20260,
+   "source": "Freelance",
+   "note": "Side project"
+  },
+  {
+   "id": "i285",
+   "date": "2026-06-28",
+   "month": "2026-06",
+   "amount": 2042,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i288",
+   "date": "2026-07-01",
+   "month": "2026-07",
+   "amount": 122900,
+   "source": "Salary"
+  },
+  {
+   "id": "i301",
+   "date": "2026-08-01",
+   "month": "2026-08",
+   "amount": 122900,
+   "source": "Salary"
+  },
+  {
+   "id": "i315",
+   "date": "2026-09-01",
+   "month": "2026-09",
+   "amount": 122900,
+   "source": "Salary"
+  },
+  {
+   "id": "i327",
+   "date": "2026-09-28",
+   "month": "2026-09",
+   "amount": 1994,
+   "source": "Interest",
+   "note": "Savings interest"
+  },
+  {
+   "id": "i328",
+   "date": "2026-10-01",
+   "month": "2026-10",
+   "amount": 122900,
+   "source": "Salary"
+  }
+ ],
+ "settings": {
+  "goal": {
+   "target": 5000000,
+   "by": "2027-12-31"
+  }
+ },
+ "meta": {}
+}

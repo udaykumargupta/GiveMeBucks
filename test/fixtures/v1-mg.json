@@ -1,0 +1,455 @@
+{
+ "M1": {
+  "today": "2026-10-18",
+  "doc": {
+   "rev": 5,
+   "accounts": [
+    {
+     "id": "hdfc",
+     "name": "HDFC Savings",
+     "kind": "bank",
+     "institution": "HDFC Bank"
+    },
+    {
+     "id": "sbi",
+     "name": "SBI",
+     "kind": "bank"
+    },
+    {
+     "id": "mf",
+     "name": "Mutual funds",
+     "kind": "mutual_fund",
+     "institution": "Groww",
+     "sip": {
+      "amount": 10000,
+      "day": 10
+     }
+    },
+    {
+     "id": "fd",
+     "name": "HDFC FD",
+     "kind": "fd",
+     "openingFromBank": true,
+     "fd": {
+      "principal": 100000,
+      "rate": 7.2,
+      "startDate": "2026-09-15",
+      "maturityDate": "2027-09-15"
+     }
+    },
+    {
+     "id": "epf",
+     "name": "EPF",
+     "kind": "epf"
+    }
+   ],
+   "snapshots": [
+    {
+     "id": "s1",
+     "accountId": "hdfc",
+     "date": "2026-08-02",
+     "value": 200000
+    },
+    {
+     "id": "s2",
+     "accountId": "sbi",
+     "date": "2026-08-02",
+     "value": 50000
+    },
+    {
+     "id": "s3",
+     "accountId": "mf",
+     "date": "2026-08-02",
+     "value": 100000,
+     "invested": 90000
+    },
+    {
+     "id": "s4",
+     "accountId": "epf",
+     "date": "2026-08-02",
+     "value": 300000
+    },
+    {
+     "id": "s5",
+     "accountId": "hdfc",
+     "date": "2026-09-06",
+     "value": 150000
+    },
+    {
+     "id": "s6",
+     "accountId": "sbi",
+     "date": "2026-09-06",
+     "value": 45000
+    },
+    {
+     "id": "s7",
+     "accountId": "mf",
+     "date": "2026-09-06",
+     "value": 112000,
+     "invested": 100000
+    },
+    {
+     "id": "s8",
+     "accountId": "hdfc",
+     "date": "2026-10-04",
+     "value": 160000
+    },
+    {
+     "id": "s9",
+     "accountId": "sbi",
+     "date": "2026-10-04",
+     "value": 40000
+    },
+    {
+     "id": "s10",
+     "accountId": "epf",
+     "date": "2026-10-04",
+     "value": 310000
+    }
+   ],
+   "income": [
+    {
+     "id": "i1",
+     "date": "2026-07-15",
+     "month": "2026-07",
+     "amount": 5000,
+     "source": "Interest"
+    },
+    {
+     "id": "i2",
+     "date": "2026-08-31",
+     "month": "2026-08",
+     "amount": 120000,
+     "source": "Salary",
+     "accountId": "hdfc"
+    },
+    {
+     "id": "i3",
+     "date": "2026-09-30",
+     "month": "2026-09",
+     "amount": 120000,
+     "source": "Salary",
+     "note": "Sept pay"
+    }
+   ],
+   "settings": {},
+   "meta": {}
+  }
+ },
+ "M2": {
+  "today": "2026-10-05",
+  "doc": {
+   "accounts": [
+    {
+     "id": "hdfc",
+     "name": "HDFC",
+     "kind": "bank"
+    },
+    {
+     "id": "sbi",
+     "name": "SBI",
+     "kind": "bank",
+     "closedOn": "2026-09-20"
+    },
+    {
+     "id": "mf",
+     "name": "MF",
+     "kind": "mutual_fund",
+     "closedOn": "2026-09-25"
+    }
+   ],
+   "snapshots": [
+    {
+     "id": "a1",
+     "accountId": "hdfc",
+     "date": "2026-09-01",
+     "value": 100000
+    },
+    {
+     "id": "b1",
+     "accountId": "sbi",
+     "date": "2026-09-01",
+     "value": 30000
+    },
+    {
+     "id": "c1",
+     "accountId": "mf",
+     "date": "2026-09-01",
+     "value": 50000,
+     "invested": 45000
+    },
+    {
+     "id": "a2",
+     "accountId": "hdfc",
+     "date": "2026-09-15",
+     "value": 95000
+    },
+    {
+     "id": "b2",
+     "accountId": "sbi",
+     "date": "2026-09-15",
+     "value": 28000
+    },
+    {
+     "id": "c2",
+     "accountId": "mf",
+     "date": "2026-09-15",
+     "value": 52000
+    },
+    {
+     "id": "a3",
+     "accountId": "hdfc",
+     "date": "2026-09-30",
+     "value": 160000
+    }
+   ],
+   "income": [],
+   "settings": {},
+   "meta": {}
+  }
+ },
+ "MG7": {
+  "today": "2026-09-05",
+  "doc": {
+   "accounts": [
+    {
+     "id": "hdfc",
+     "name": "HDFC",
+     "kind": "bank"
+    },
+    {
+     "id": "sbi",
+     "name": "SBI",
+     "kind": "bank"
+    }
+   ],
+   "snapshots": [
+    {
+     "id": "h1",
+     "accountId": "hdfc",
+     "date": "2026-08-01",
+     "value": 100000
+    },
+    {
+     "id": "h2",
+     "accountId": "hdfc",
+     "date": "2026-09-01",
+     "value": 90000
+    },
+    {
+     "id": "b1",
+     "accountId": "sbi",
+     "date": "2026-08-20",
+     "value": 50000
+    },
+    {
+     "id": "b2",
+     "accountId": "sbi",
+     "date": "2026-09-01",
+     "value": 50000
+    }
+   ],
+   "income": [
+    {
+     "id": "i1",
+     "date": "2026-08-10",
+     "month": "2026-08",
+     "amount": 30000,
+     "source": "Freelance",
+     "accountId": "sbi"
+    }
+   ],
+   "settings": {},
+   "meta": {}
+  }
+ },
+ "MG8": {
+  "today": "2026-09-05",
+  "doc": {
+   "accounts": [
+    {
+     "id": "hdfc",
+     "name": "HDFC",
+     "kind": "bank"
+    },
+    {
+     "id": "mf",
+     "name": "MF",
+     "kind": "mutual_fund",
+     "sip": {
+      "amount": 10000,
+      "day": 10
+     }
+    }
+   ],
+   "snapshots": [
+    {
+     "id": "h1",
+     "accountId": "hdfc",
+     "date": "2026-08-01",
+     "value": 200000
+    },
+    {
+     "id": "m1",
+     "accountId": "mf",
+     "date": "2026-08-01",
+     "value": 100000,
+     "invested": 100000
+    },
+    {
+     "id": "h2",
+     "accountId": "hdfc",
+     "date": "2026-09-01",
+     "value": 150000
+    },
+    {
+     "id": "m2",
+     "accountId": "mf",
+     "date": "2026-09-01",
+     "value": 112000
+    }
+   ],
+   "income": [],
+   "settings": {},
+   "meta": {}
+  }
+ },
+ "MG9": {
+  "today": "2026-10-17",
+  "doc": {
+   "accounts": [
+    {
+     "id": "hdfc",
+     "name": "HDFC",
+     "kind": "bank"
+    },
+    {
+     "id": "fd",
+     "name": "SBI FD",
+     "kind": "fd",
+     "fd": {
+      "principal": 200000,
+      "rate": 7.1,
+      "startDate": "2023-11-07",
+      "maturityDate": "2026-11-06"
+     }
+    }
+   ],
+   "snapshots": [
+    {
+     "id": "h1",
+     "accountId": "hdfc",
+     "date": "2026-09-01",
+     "value": 100000
+    }
+   ],
+   "income": [],
+   "settings": {},
+   "meta": {}
+  }
+ },
+ "MG11a": {
+  "today": "2026-09-05",
+  "doc": {
+   "accounts": [
+    {
+     "id": "hdfc",
+     "name": "HDFC",
+     "kind": "bank"
+    },
+    {
+     "id": "sbi",
+     "name": "SBI",
+     "kind": "bank"
+    }
+   ],
+   "snapshots": [
+    {
+     "id": "h1",
+     "accountId": "hdfc",
+     "date": "2026-08-03",
+     "value": 100000
+    },
+    {
+     "id": "h2",
+     "accountId": "hdfc",
+     "date": "2026-08-31",
+     "value": 72000
+    },
+    {
+     "id": "b1",
+     "accountId": "sbi",
+     "date": "2026-08-03",
+     "value": 50000
+    },
+    {
+     "id": "b2",
+     "accountId": "sbi",
+     "date": "2026-08-17",
+     "value": 43000
+    },
+    {
+     "id": "b3",
+     "accountId": "sbi",
+     "date": "2026-08-31",
+     "value": 36000
+    }
+   ],
+   "income": [],
+   "settings": {},
+   "meta": {}
+  }
+ },
+ "MG11b": {
+  "today": "2026-11-05",
+  "doc": {
+   "accounts": [
+    {
+     "id": "hdfc",
+     "name": "HDFC",
+     "kind": "bank"
+    },
+    {
+     "id": "sbi",
+     "name": "SBI",
+     "kind": "bank"
+    }
+   ],
+   "snapshots": [
+    {
+     "id": "h1",
+     "accountId": "hdfc",
+     "date": "2026-10-01",
+     "value": 100000
+    },
+    {
+     "id": "h2",
+     "accountId": "hdfc",
+     "date": "2026-10-10",
+     "value": 90000
+    },
+    {
+     "id": "h3",
+     "accountId": "hdfc",
+     "date": "2026-10-31",
+     "value": 70000
+    },
+    {
+     "id": "b1",
+     "accountId": "sbi",
+     "date": "2026-10-01",
+     "value": 50000
+    },
+    {
+     "id": "b2",
+     "accountId": "sbi",
+     "date": "2026-10-31",
+     "value": 40000
+    }
+   ],
+   "income": [],
+   "settings": {},
+   "meta": {}
+  }
+ }
+}

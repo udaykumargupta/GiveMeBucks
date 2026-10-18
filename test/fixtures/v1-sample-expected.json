@@ -1,0 +1,1794 @@
+{
+ "today": "2026-10-17",
+ "note": "Old engine (public/js/calc.js Ledger) on sampleDb(today) with meta = {}. Frozen before calc.js was deleted.",
+ "firstCheckin": "2024-09-01",
+ "trackStart": "2024-09-01",
+ "months": {
+  "2024-09": 66349.1429,
+  "2024-10": 69394.5714,
+  "2024-11": 70091,
+  "2024-12": 82371.8571,
+  "2025-01": 54294.2857,
+  "2025-02": 73993.8571,
+  "2025-03": 70059.7143,
+  "2025-04": 62005.4286,
+  "2025-05": 79121.5238,
+  "2025-06": 57731.9048,
+  "2025-07": 66016.8571,
+  "2025-08": 101556.8571,
+  "2025-09": 72864,
+  "2025-10": 61857,
+  "2025-11": 68464,
+  "2025-12": 66667.8571,
+  "2026-01": 65873.7143,
+  "2026-02": 61662,
+  "2026-03": 67869,
+  "2026-04": 60176.1429,
+  "2026-05": 97342.2857,
+  "2026-06": 73881,
+  "2026-07": 75219.1429,
+  "2026-08": 70213.1429,
+  "2026-09": 85656.2857,
+  "2026-10": 35658.4286
+ },
+ "weeks": {
+  "2024-09-02": 28383,
+  "2024-09-09": 13549,
+  "2024-09-16": 9772,
+  "2024-09-23": 10672,
+  "2024-09-30": 27812,
+  "2024-10-07": 11767,
+  "2024-10-14": 15218,
+  "2024-10-21": 12633,
+  "2024-10-28": 10391,
+  "2024-11-04": 29214,
+  "2024-11-11": 15819,
+  "2024-11-18": 8753,
+  "2024-11-25": 13827,
+  "2024-12-02": 28929,
+  "2024-12-09": 14872,
+  "2024-12-16": 10385,
+  "2024-12-23": 20386,
+  "2024-12-30": 20386,
+  "2025-01-06": 10088,
+  "2025-01-13": 11341,
+  "2025-01-20": 11341,
+  "2025-01-27": 9748,
+  "2025-02-03": 28542,
+  "2025-02-10": 25166,
+  "2025-02-17": 10715,
+  "2025-02-24": 9500,
+  "2025-03-03": 29422,
+  "2025-03-10": 14393,
+  "2025-03-17": 9822,
+  "2025-03-24": 9417,
+  "2025-03-31": 30040,
+  "2025-04-07": 10940,
+  "2025-04-14": 12030,
+  "2025-04-21": 9167,
+  "2025-04-28": 9613,
+  "2025-05-05": 28756,
+  "2025-05-12": 14349,
+  "2025-05-19": 16435.6667,
+  "2025-05-26": 16435.6667,
+  "2025-06-02": 16435.6667,
+  "2025-06-09": 15003,
+  "2025-06-16": 10380,
+  "2025-06-23": 9837,
+  "2025-06-30": 26098,
+  "2025-07-07": 9870,
+  "2025-07-14": 13607,
+  "2025-07-21": 12713,
+  "2025-07-28": 13050,
+  "2025-08-04": 28217,
+  "2025-08-11": 29300,
+  "2025-08-18": 29300,
+  "2025-08-25": 9147,
+  "2025-09-01": 19416.5,
+  "2025-09-08": 19416.5,
+  "2025-09-15": 15728,
+  "2025-09-22": 10749,
+  "2025-09-29": 26439,
+  "2025-10-06": 9415,
+  "2025-10-13": 15115,
+  "2025-10-20": 11042,
+  "2025-10-27": 10360,
+  "2025-11-03": 28152,
+  "2025-11-10": 15480,
+  "2025-11-17": 10936,
+  "2025-11-24": 10936,
+  "2025-12-01": 27298,
+  "2025-12-08": 12586,
+  "2025-12-15": 13029,
+  "2025-12-22": 9509,
+  "2025-12-29": 9907,
+  "2026-01-05": 27567,
+  "2026-01-12": 15720,
+  "2026-01-19": 10293,
+  "2026-01-26": 7738,
+  "2026-02-02": 28559,
+  "2026-02-09": 12052.5,
+  "2026-02-16": 12052.5,
+  "2026-02-23": 9208,
+  "2026-03-02": 28277,
+  "2026-03-09": 12070,
+  "2026-03-16": 8915,
+  "2026-03-23": 9211,
+  "2026-03-30": 28282,
+  "2026-04-06": 10248,
+  "2026-04-13": 14060,
+  "2026-04-20": 9489,
+  "2026-04-27": 10811,
+  "2026-05-04": 34545,
+  "2026-05-11": 34545,
+  "2026-05-18": 11389,
+  "2026-05-25": 12230,
+  "2026-06-01": 29053,
+  "2026-06-08": 10195,
+  "2026-06-15": 13745,
+  "2026-06-22": 12932,
+  "2026-06-29": 27846,
+  "2026-07-06": 12357,
+  "2026-07-13": 12398,
+  "2026-07-20": 24197,
+  "2026-07-27": 8928,
+  "2026-08-03": 27781,
+  "2026-08-10": 14428,
+  "2026-08-17": 11078,
+  "2026-08-24": 10578,
+  "2026-08-31": 26581,
+  "2026-09-07": 29851,
+  "2026-09-14": 15500,
+  "2026-09-21": 12725,
+  "2026-09-28": 11192,
+  "2026-10-05": 29263
+ },
+ "snapshotValues": [
+  {
+   "accountId": "hdfc",
+   "date": "2024-09-01",
+   "value": 282124
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-09-08",
+   "value": 257894
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-09-15",
+   "value": 207285
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-09-22",
+   "value": 201421
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-09-29",
+   "value": 195018
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-10-06",
+   "value": 269131
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-10-13",
+   "value": 217071
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-10-20",
+   "value": 210460
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-10-27",
+   "value": 202880
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-11-03",
+   "value": 294645
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-11-10",
+   "value": 244917
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-11-17",
+   "value": 217946
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-11-24",
+   "value": 212694
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-12-01",
+   "value": 302398
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-12-08",
+   "value": 277840
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-12-15",
+   "value": 226437
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2024-12-22",
+   "value": 220206
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-01-05",
+   "value": 286543
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-01-12",
+   "value": 235490
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-01-26",
+   "value": 224401
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-02-02",
+   "value": 316552
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-02-09",
+   "value": 292227
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-02-16",
+   "value": 230743
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-02-23",
+   "value": 224314
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-03-02",
+   "value": 316614
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-03-09",
+   "value": 291761
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-03-16",
+   "value": 240645
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-03-23",
+   "value": 352352
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-03-30",
+   "value": 346702
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-04-06",
+   "value": 431278
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-04-13",
+   "value": 379714
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-04-20",
+   "value": 375016
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-04-27",
+   "value": 369516
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-05-04",
+   "value": 473548
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-05-11",
+   "value": 424094
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-05-18",
+   "value": 398005
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-06-08",
+   "value": 471021
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-06-15",
+   "value": 419539
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-06-22",
+   "value": 413311
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-06-29",
+   "value": 407409
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-07-06",
+   "value": 494350
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-07-13",
+   "value": 443428
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-07-20",
+   "value": 437784
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-07-27",
+   "value": 430156
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-08-03",
+   "value": 532126
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-08-10",
+   "value": 482996
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-08-24",
+   "value": 416937
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-08-31",
+   "value": 411449
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-09-14",
+   "value": 445749
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-09-21",
+   "value": 438832
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-09-28",
+   "value": 432383
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-10-05",
+   "value": 519119
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-10-12",
+   "value": 468470
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-10-19",
+   "value": 461921
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-10-26",
+   "value": 455296
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-11-02",
+   "value": 558880
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-11-09",
+   "value": 534789
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-11-16",
+   "value": 483021
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-11-30",
+   "value": 469898
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-12-07",
+   "value": 556119
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-12-14",
+   "value": 503567
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-12-21",
+   "value": 498270
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2025-12-28",
+   "value": 492565
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-01-04",
+   "value": 596421
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-01-11",
+   "value": 547681
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-01-18",
+   "value": 520769
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-01-25",
+   "value": 514593
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-02-01",
+   "value": 619750
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-02-08",
+   "value": 595415
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-02-22",
+   "value": 388472
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-03-01",
+   "value": 492747
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-03-08",
+   "value": 468581
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-03-15",
+   "value": 418859
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-03-22",
+   "value": 545270
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-03-29",
+   "value": 539743
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-04-05",
+   "value": 638474
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-04-12",
+   "value": 587325
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-04-19",
+   "value": 581409
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-04-26",
+   "value": 575716
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-05-03",
+   "value": 692129
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-05-17",
+   "value": 591045
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-05-24",
+   "value": 584212
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-05-31",
+   "value": 576874
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-06-07",
+   "value": 675142
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-06-14",
+   "value": 624025
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-06-21",
+   "value": 618298
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-06-28",
+   "value": 610539
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-07-05",
+   "value": 709531
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-07-12",
+   "value": 657117
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-07-19",
+   "value": 652198
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-07-26",
+   "value": 632839
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-08-02",
+   "value": 750382
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-08-09",
+   "value": 726514
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-08-16",
+   "value": 675377
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-08-23",
+   "value": 668730
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-08-30",
+   "value": 662383
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-09-06",
+   "value": 762135
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-09-13",
+   "value": 692391
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-09-20",
+   "value": 685611
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-09-27",
+   "value": 677976
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-10-04",
+   "value": 794161
+  },
+  {
+   "accountId": "hdfc",
+   "date": "2026-10-11",
+   "value": 744403
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-09-01",
+   "value": 91416
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-09-08",
+   "value": 124014
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-09-15",
+   "value": 136074
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-09-22",
+   "value": 132166
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-09-29",
+   "value": 128861
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-10-06",
+   "value": 124936
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-10-13",
+   "value": 140229
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-10-20",
+   "value": 131622
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-10-27",
+   "value": 126569
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-11-03",
+   "value": 122413
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-11-10",
+   "value": 117927
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-11-17",
+   "value": 129079
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-11-24",
+   "value": 125578
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-12-01",
+   "value": 120047
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-12-08",
+   "value": 115676
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-12-15",
+   "value": 127207
+  },
+  {
+   "accountId": "sbi",
+   "date": "2024-12-22",
+   "value": 123053
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-01-05",
+   "value": 114843
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-01-12",
+   "value": 130808
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-01-26",
+   "value": 119215
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-02-02",
+   "value": 115316
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-02-09",
+   "value": 111099
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-02-16",
+   "value": 122417
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-02-23",
+   "value": 118131
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-03-02",
+   "value": 114331
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-03-09",
+   "value": 109762
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-03-16",
+   "value": 121485
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-03-23",
+   "value": 117556
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-03-30",
+   "value": 114653
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-04-06",
+   "value": 109837
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-04-13",
+   "value": 125461
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-04-20",
+   "value": 118129
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-04-27",
+   "value": 114462
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-05-04",
+   "value": 110617
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-05-11",
+   "value": 106315
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-05-18",
+   "value": 118055
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-06-08",
+   "value": 105532
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-06-15",
+   "value": 117011
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-06-22",
+   "value": 112859
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-06-29",
+   "value": 109748
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-07-06",
+   "value": 106509
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-07-13",
+   "value": 122561
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-07-20",
+   "value": 114598
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-07-27",
+   "value": 109513
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-08-03",
+   "value": 104293
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-08-10",
+   "value": 100206
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-08-24",
+   "value": 107665
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-08-31",
+   "value": 104006
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-09-14",
+   "value": 115673
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-09-21",
+   "value": 106862
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-09-28",
+   "value": 138110
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-10-05",
+   "value": 134735
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-10-12",
+   "value": 150969
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-10-19",
+   "value": 142403
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-10-26",
+   "value": 137986
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-11-02",
+   "value": 133842
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-11-09",
+   "value": 129781
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-11-16",
+   "value": 141069
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-11-30",
+   "value": 164918
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-12-07",
+   "value": 161199
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-12-14",
+   "value": 176165
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-12-21",
+   "value": 168433
+  },
+  {
+   "accountId": "sbi",
+   "date": "2025-12-28",
+   "value": 165864
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-01-04",
+   "value": 203977
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-01-11",
+   "value": 200150
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-01-18",
+   "value": 232599
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-01-25",
+   "value": 228482
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-02-01",
+   "value": 225387
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-02-08",
+   "value": 253181
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-02-22",
+   "value": 261019
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-03-01",
+   "value": 257336
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-03-08",
+   "value": 253225
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-03-15",
+   "value": 265877
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-03-22",
+   "value": 262311
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-03-29",
+   "value": 260572
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-04-05",
+   "value": 256459
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-04-12",
+   "value": 272360
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-04-19",
+   "value": 264216
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-04-26",
+   "value": 260420
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-05-03",
+   "value": 256096
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-05-17",
+   "value": 263090
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-05-24",
+   "value": 258534
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-05-31",
+   "value": 253642
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-06-07",
+   "value": 249221
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-06-14",
+   "value": 265143
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-06-21",
+   "value": 257125
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-06-28",
+   "value": 274254
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-07-05",
+   "value": 270316
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-07-12",
+   "value": 285373
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-07-19",
+   "value": 277894
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-07-26",
+   "value": 273056
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-08-02",
+   "value": 269485
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-08-09",
+   "value": 265572
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-08-16",
+   "value": 277281
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-08-23",
+   "value": 272850
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-08-30",
+   "value": 268619
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-09-06",
+   "value": 265186
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-09-13",
+   "value": 280079
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-09-20",
+   "value": 271359
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-09-27",
+   "value": 266269
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-10-04",
+   "value": 263786
+  },
+  {
+   "accountId": "sbi",
+   "date": "2026-10-11",
+   "value": 259281
+  },
+  {
+   "accountId": "mf",
+   "date": "2024-09-01",
+   "value": 131500
+  },
+  {
+   "accountId": "mf",
+   "date": "2024-10-06",
+   "value": 166854
+  },
+  {
+   "accountId": "mf",
+   "date": "2024-11-03",
+   "value": 190677
+  },
+  {
+   "accountId": "mf",
+   "date": "2024-12-01",
+   "value": 203716
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-01-05",
+   "value": 224315
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-02-02",
+   "value": 262968
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-03-02",
+   "value": 295752
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-04-06",
+   "value": 321588
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-05-04",
+   "value": 351141
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-06-01",
+   "value": 374270
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-07-06",
+   "value": 392436
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-08-03",
+   "value": 439282
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-09-07",
+   "value": 467574
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-10-05",
+   "value": 476345
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-11-02",
+   "value": 502426
+  },
+  {
+   "accountId": "mf",
+   "date": "2025-12-07",
+   "value": 507457
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-01-04",
+   "value": 570303
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-02-01",
+   "value": 591274
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-03-01",
+   "value": 617010
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-04-05",
+   "value": 629634
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-05-03",
+   "value": 687287
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-06-07",
+   "value": 658097
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-07-05",
+   "value": 637906
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-08-02",
+   "value": 683466
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-09-06",
+   "value": 748489
+  },
+  {
+   "accountId": "mf",
+   "date": "2026-10-04",
+   "value": 800418
+  },
+  {
+   "accountId": "stocks",
+   "date": "2024-09-01",
+   "value": 161000
+  },
+  {
+   "accountId": "stocks",
+   "date": "2024-10-06",
+   "value": 179814
+  },
+  {
+   "accountId": "stocks",
+   "date": "2024-11-03",
+   "value": 174593
+  },
+  {
+   "accountId": "stocks",
+   "date": "2024-12-01",
+   "value": 179094
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-01-05",
+   "value": 179361
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-02-02",
+   "value": 191105
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-03-02",
+   "value": 194919
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-04-06",
+   "value": 215595
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-05-04",
+   "value": 214746
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-06-01",
+   "value": 201675
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-07-06",
+   "value": 208925
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-08-03",
+   "value": 226627
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-09-07",
+   "value": 221150
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-10-05",
+   "value": 236491
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-11-02",
+   "value": 252639
+  },
+  {
+   "accountId": "stocks",
+   "date": "2025-12-07",
+   "value": 262749
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-01-04",
+   "value": 273363
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-02-01",
+   "value": 256689
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-03-01",
+   "value": 285094
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-04-05",
+   "value": 262414
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-05-03",
+   "value": 264771
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-06-07",
+   "value": 292200
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-07-05",
+   "value": 279832
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-08-02",
+   "value": 275780
+  },
+  {
+   "accountId": "stocks",
+   "date": "2026-09-06",
+   "value": 245406
+  },
+  {
+   "accountId": "epf",
+   "date": "2024-09-01",
+   "value": 327408
+  },
+  {
+   "accountId": "epf",
+   "date": "2024-10-06",
+   "value": 339067
+  },
+  {
+   "accountId": "epf",
+   "date": "2024-11-03",
+   "value": 350806
+  },
+  {
+   "accountId": "epf",
+   "date": "2024-12-01",
+   "value": 362626
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-01-05",
+   "value": 374527
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-02-02",
+   "value": 386510
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-03-02",
+   "value": 398575
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-04-06",
+   "value": 411856
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-05-04",
+   "value": 425228
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-06-01",
+   "value": 438693
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-07-06",
+   "value": 452249
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-08-03",
+   "value": 465899
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-09-07",
+   "value": 479643
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-10-05",
+   "value": 493482
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-11-02",
+   "value": 507415
+  },
+  {
+   "accountId": "epf",
+   "date": "2025-12-07",
+   "value": 521444
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-01-04",
+   "value": 535570
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-02-01",
+   "value": 549793
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-03-01",
+   "value": 564114
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-04-05",
+   "value": 579790
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-05-03",
+   "value": 595575
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-06-07",
+   "value": 611468
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-07-05",
+   "value": 627470
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-08-02",
+   "value": 643582
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-09-06",
+   "value": 659805
+  },
+  {
+   "accountId": "epf",
+   "date": "2026-10-04",
+   "value": 676140
+  },
+  {
+   "accountId": "gold",
+   "date": "2024-09-01",
+   "value": 66500
+  },
+  {
+   "accountId": "gold",
+   "date": "2024-10-06",
+   "value": 66028
+  },
+  {
+   "accountId": "gold",
+   "date": "2025-01-05",
+   "value": 61314
+  },
+  {
+   "accountId": "gold",
+   "date": "2025-04-06",
+   "value": 65460
+  },
+  {
+   "accountId": "gold",
+   "date": "2025-07-06",
+   "value": 68305
+  },
+  {
+   "accountId": "gold",
+   "date": "2025-10-05",
+   "value": 66158
+  },
+  {
+   "accountId": "gold",
+   "date": "2026-01-04",
+   "value": 73584
+  },
+  {
+   "accountId": "gold",
+   "date": "2026-04-05",
+   "value": 76793
+  },
+  {
+   "accountId": "gold",
+   "date": "2026-07-05",
+   "value": 73384
+  },
+  {
+   "accountId": "gold",
+   "date": "2026-10-04",
+   "value": 71677
+  }
+ ],
+ "fdStarts": [
+  {
+   "accountId": "fd1",
+   "date": "2024-09-01",
+   "value": 211869.1471752543
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-02-19",
+   "value": 150000
+  }
+ ],
+ "fdValues": [
+  {
+   "accountId": "fd1",
+   "date": "2024-09-30",
+   "value": 213057.15640070842
+  },
+  {
+   "accountId": "fd1",
+   "date": "2024-10-31",
+   "value": 214334.46470564062
+  },
+  {
+   "accountId": "fd1",
+   "date": "2024-11-30",
+   "value": 215577.8601475295
+  },
+  {
+   "accountId": "fd1",
+   "date": "2024-12-31",
+   "value": 216870.28043407487
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-01-31",
+   "value": 218170.44896617724
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-02-28",
+   "value": 219351.49315225924
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-03-31",
+   "value": 220666.5369115766
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-04-30",
+   "value": 221946.66592186003
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-05-31",
+   "value": 223277.2681152959
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-06-30",
+   "value": 224572.5424792824
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-07-31",
+   "value": 225918.8871804621
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-08-31",
+   "value": 227273.30341182262
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-09-30",
+   "value": 228591.75954492
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-10-31",
+   "value": 229962.2000306488
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-11-30",
+   "value": 231296.25497005178
+  },
+  {
+   "accountId": "fd1",
+   "date": "2025-12-31",
+   "value": 232682.90929494717
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-01-31",
+   "value": 234077.87681201677
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-02-28",
+   "value": 235345.03428824362
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-03-31",
+   "value": 236755.9616276452
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-04-30",
+   "value": 238129.4284843737
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-05-31",
+   "value": 239557.04866756898
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-06-30",
+   "value": 240946.76516880776
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-07-31",
+   "value": 242391.2756907535
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-08-31",
+   "value": 243844.44626109846
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-09-30",
+   "value": 245259.03478015616
+  },
+  {
+   "accountId": "fd1",
+   "date": "2026-10-17",
+   "value": 246064.27458028155
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-02-28",
+   "value": 150265.98508825892
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-03-31",
+   "value": 151185.77135680275
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-04-30",
+   "value": 152081.24731700035
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-05-31",
+   "value": 153012.1449043887
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-06-30",
+   "value": 153918.43850695787
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-07-31",
+   "value": 154860.58164155518
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-08-31",
+   "value": 155808.49168552787
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-09-30",
+   "value": 156731.34809884574
+  },
+  {
+   "accountId": "fd2",
+   "date": "2026-10-17",
+   "value": 157256.7243336106
+  }
+ ],
+ "totalAtFirst": 1271817.1471752543,
+ "totalAtToday": 3225645.998913892
+}

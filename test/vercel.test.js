@@ -43,11 +43,13 @@ test('configured deployment requires a valid session and accepts POSTGRES_URL', 
   const s = await serve({ ...FULL, DATABASE_URL: '', POSTGRES_URL: FULL.DATABASE_URL });
   try {
     const cfg = (await s.get('/api/public/config')).json;
-    assert.deepEqual(cfg, { googleClientId: FULL.GOOGLE_CLIENT_ID, authRequired: true, restricted: true, storage: 'database', reminders: 'none', setupMissing: [] });
+    assert.deepEqual(cfg, { googleClientId: FULL.GOOGLE_CLIENT_ID, authRequired: true, restricted: true, storage: 'database', setupMissing: [] });
     assert.equal((await s.get('/api/db')).status, 401);
     assert.equal((await s.get('/api/db', { Authorization: 'Bearer forged.token.here' })).status, 401);
     // A valid session for an email outside the allowlist is refused before any database access.
     const outsider = createSessions({ secret: SECRET }).issue({ sub: '9', email: 'outsider@example.com', name: 'O' });
     assert.equal((await s.get('/api/db', { Authorization: `Bearer ${outsider}` })).status, 403);
+    assert.equal((await s.get('/api/db/v1', { Authorization: `Bearer ${outsider}` })).status, 403);
+    assert.equal((await s.get('/api/due')).status, 401, 'no route answers before sign-in');
   } finally { await s.close(); }
 });

@@ -2,18 +2,37 @@
 <html lang="en-IN" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>GiveMeBucks</title>
-  <meta name="description" content="GiveMeBucks — your income, savings and investments in one dashboard">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23181b1f'/%3E%3Cpath d='M5 23l7-8 5 5 10-12M21 8h6v6' fill='none' stroke='%23f5a623' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta name="description" content="GiveMeBucks — your net worth, spending and money places on one calm page">
+  <meta name="theme-color" content="#0d0f12">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23f05a28'/%3E%3Cstop offset='1' stop-color='%23fbca0a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='%230d0f12'/%3E%3Cpath d='M5 23l7-8 5 5 10-12M21 8h6v6' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/css/app.css">
-  <script>try { document.documentElement.dataset.theme = JSON.parse(localStorage.getItem('gt.theme')) || 'dark'; } catch (e) {}</script>
+  <script>
+    // Theme before first paint (dark by default); the browser bar follows --bg.
+    try {
+      var t = JSON.parse(localStorage.getItem('gt.theme')) === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = t;
+      document.querySelector('meta[name="theme-color"]').content = t === 'light' ? '#f5f6f8' : '#0d0f12';
+    } catch (e) {}
+  </script>
 </head>
 <body>
-  <div id="app"><div class="boot">Loading dashboard…</div></div>
+  <div id="app" aria-busy="true">
+    <div class="boot" role="status" aria-label="Loading">
+      <div class="boot-bar"></div>
+      <div class="boot-grid">
+        <div class="boot-card skel"></div>
+        <div class="boot-card skel tall"></div>
+        <div class="boot-card skel short"></div>
+      </div>
+    </div>
+  </div>
+  <div id="toasts" class="toast-host" role="status" aria-live="polite"></div>
   <script type="module" src="/js/app.js"></script>
 </body>
 </html>

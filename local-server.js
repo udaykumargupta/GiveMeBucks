@@ -1,5 +1,5 @@
-// GiveMeBucks — local server. Serves the dashboard and JSON API (lib/app.js),
-// stores data under ./data, and sends a macOS reminder when data is due.
+// GiveMeBucks — local server. Serves the app and JSON API (lib/app.js) and
+// stores data under ./data.
 // Settings come from the environment or a .env file (see .env.example).
 // Zero dependencies: run with `npm start` (node local-server.js).
 import http from 'node:http';
@@ -8,11 +8,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFile } from 'node:child_process';
 import { createHandler, send } from './lib/app.js';
-import { createGoogleVerifier, createSessions, parseAllowlist, MIN_SECRET_LENGTH } from './lib/auth.js';
-import { legacyStore } from './lib/store.js';
+import { createGoogleVerifier, createSessions, parseAllowlist, MIN_SECRET_LENGTH, SESSION_TTL_MS } from './lib/auth.js';
+import { legacyStore, legacyStoreV2 } from './lib/store.js';
 import { createStorage } from './lib/storage.js';
-import { notify } from './lib/notify.js';
-import { dueItems, todayISO, withDefaults } from './public/js/calc.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const ENV_FILE = path.join(ROOT, '.env');
@@ -23,7 +21,6 @@ const PUBLIC = path.join(ROOT, 'public');
 const DATA = env('GIVEMEBUCKS_DATA_DIR', env('GROWTH_DATA_DIR', path.join(ROOT, 'data')));
 const PORT = Number(env('PORT')) || 4180;
 const URL_BASE = `http://localhost:${PORT}`;
-const REMINDER_STATE = path.join(DATA, 'reminder-state.json');
 fs.mkdirSync(DATA, { recursive: true });
 const storage = createStorage({ env: process.env, dataDir: DATA });
 
@@ -37,64 +34,12 @@ if (auth.enabled) {
     console.error('Generate one with:  openssl rand -base64 48   and put it in .env as JWT_SECRET=...');
     process.exit(1);
   }
-  auth.sessions = createSessions({ secret, ttlMs: Number(env('JWT_EXPIRATION_MS', String(7 * 24 * 60 * 60 * 1000))) });
+  auth.sessions = createSessions({ secret, ttlMs: Number(env('JWT_EXPIRATION_MS')) || SESSION_TTL_MS });
   auth.verifyGoogle = createGoogleVerifier({ clientId: GOOGLE_CLIENT_ID });
 }
 
-// -------------------------------------------------------------- reminders
-// State per user: { users: { <id>: { lastCheckedDate, lastSentAt, lastItems } } }
-function readReminderState() {
-  let s = {};
-  try { s = JSON.parse(fs.readFileSync(REMINDER_STATE, 'utf8')); } catch { /* first run */ }
-  if (!s.users) s = { users: s.lastCheckedDate ? { local: s } : {} }; // older single-user format
-  return s;
-}
-function writeReminderState(state) {
-  fs.writeFileSync(REMINDER_STATE, JSON.stringify(state, null, 2));
-}
-
-async function sendReminder(items, { test = false, name = '' } = {}) {
-  const actionable = items.filter((i) => i.severity !== 'info');
-  if (!actionable.length && !test) return false;
-  const message = actionable.length
-    ? actionable.map((i) => i.title).join(' · ')
-    : 'All caught up — nothing to update right now.';
-  const who = name ? ` · ${name.split(' ')[0]}` : '';
-  const subtitle = actionable.length
-    ? `${actionable.length} update${actionable.length > 1 ? 's' : ''} needed${who}`
-    : `Test reminder${who}`;
-  return notify({ title: 'GiveMeBucks', subtitle, message, url: `${URL_BASE}/#checkin` });
-}
-
-async function maybeRemind(now = new Date()) {
-  const today = todayISO(now);
-  const state = readReminderState();
-  let changed = false;
-  for (const id of auth.enabled ? await storage.listUserIds() : ['local']) {
-    const db = await storage.read(id);
-    const { reminders } = withDefaults(db).settings;
-    if (!reminders.enabled) continue;
-    const [hh, mm] = String(reminders.notifyAt || '20:00').split(':').map(Number);
-    if (now.getHours() * 60 + now.getMinutes() < hh * 60 + (mm || 0)) continue;
-    const mine = state.users[id] || {};
-    if (mine.lastCheckedDate === today) continue;
-    const items = dueItems(db, today);
-    const sent = await sendReminder(items, { name: withDefaults(db).settings.owner });
-    state.users[id] = { lastCheckedDate: today, lastSentAt: sent ? now.toISOString() : mine.lastSentAt, lastItems: items.map((i) => i.title) };
-    changed = true;
-    if (sent) console.log(`[reminder] sent ${now.toLocaleString()}: ${items.map((i) => i.title).join(' · ')}`);
-  }
-  if (changed) writeReminderState(state);
-}
-
-const reminders = {
-  kind: 'macos',
-  test: (userId, db, user) => sendReminder(dueItems(db, todayISO()), { test: true, name: user.name }),
-  status: (userId) => readReminderState().users[userId] || {},
-};
-
 // ----------------------------------------------------------------- server
-const handle = createHandler({ publicDir: PUBLIC, auth, storage, reminders });
+const handle = createHandler({ publicDir: PUBLIC, auth, storage });
 // Only answer requests addressed to this machine (blocks DNS-rebinding reads).
 const ALLOWED_HOSTS = new Set([`localhost:${PORT}`, `127.0.0.1:${PORT}`, `[::1]:${PORT}`]);
 
@@ -105,19 +50,17 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, '127.0.0.1', () => {
   console.log(`GiveMeBucks running at ${URL_BASE}`);
-  const where = storage.kind === 'database' ? 'Neon Postgres (DATABASE_URL)' : auth.enabled ? path.join(DATA, 'users') : legacyStore(DATA).file;
+  const where = storage.kind === 'database' ? 'Neon Postgres (DATABASE_URL)' : auth.enabled ? path.join(DATA, 'users') : legacyStoreV2(DATA).file;
   if (!auth.enabled) {
     console.log(`Sign-in: off (local mode). Data: ${where}`);
     console.log('         Set GOOGLE_CLIENT_ID and JWT_SECRET in .env to require Google sign-in.');
   } else {
     console.log(`Sign-in: Google — ${auth.allow.size && !auth.allow.has('*') ? `only ${[...auth.allow].join(', ')}` : 'any Google account (each gets a private dashboard)'}`);
     console.log(`Data: ${where}`);
-    if (storage.kind === 'file' && legacyStore(DATA).exists() && !auth.allow.size) {
-      console.log('Note: data/db.json (from before sign-in) is not linked to an account. Add your email to');
+    if (storage.kind === 'file' && (legacyStore(DATA).exists() || legacyStoreV2(DATA).exists()) && !auth.allow.size) {
+      console.log('Note: the data from before sign-in (data/db.json, data/db.v2.json) is not linked to an account. Add your email to');
       console.log('      ALLOWED_EMAILS and it moves to your account the first time you sign in.');
     }
   }
   if (process.argv.includes('--open')) execFile('/usr/bin/open', [URL_BASE], () => {});
-  maybeRemind().catch((e) => console.error('[reminder]', e));
-  setInterval(() => maybeRemind().catch((e) => console.error('[reminder]', e)), 5 * 60 * 1000);
 });

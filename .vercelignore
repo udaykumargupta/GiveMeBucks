@@ -5,6 +5,5 @@ data/
 !.env.example
 node_modules/
 test/
-scripts/
 local-server.js
 .DS_Store

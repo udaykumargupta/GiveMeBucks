@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
-import { createGoogleVerifier, createSessions, parseAllowlist, isAllowed, safeUserId } from '../lib/auth.js';
+import { createGoogleVerifier, createSessions, parseAllowlist, isAllowed, safeUserId, SESSION_TTL_MS } from '../lib/auth.js';
 
 const CLIENT = 'test-client.apps.googleusercontent.com';
 const NOW = Date.UTC(2026, 9, 17, 12, 0, 0);
@@ -85,6 +85,19 @@ test('session tokens round-trip and fail closed', () => {
   assert.equal(sessions.verify('garbage'), null);
   clock = NOW + 61_000;
   assert.equal(sessions.verify(token), null, 'expired');
+});
+
+test('sessions last 30 days by default (JWT_EXPIRATION_MS default)', () => {
+  assert.equal(SESSION_TTL_MS, 2592000000);
+  let clock = NOW;
+  const sessions = createSessions({ secret: 'x'.repeat(48), now: () => clock });
+  assert.equal(sessions.ttlMs, SESSION_TTL_MS);
+  const token = sessions.issue({ sub: '42', email: 'a@example.com' });
+  assert.equal(sessions.verify(token).exp, NOW / 1000 + 30 * 24 * 60 * 60);
+  clock = NOW + 29 * 24 * 60 * 60 * 1000;
+  assert.ok(sessions.verify(token), 'still signed in after 29 days');
+  clock = NOW + SESSION_TTL_MS;
+  assert.equal(sessions.verify(token), null, 'expired after 30 days');
 });
 
 test('session secret must be long enough', () => {

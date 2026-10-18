@@ -19,12 +19,15 @@ export async function loadConfig() {
   return config;
 }
 export const authRequired = () => Boolean(config.authRequired);
-/** Server facts the UI adapts to: storage ('file' | 'database'), reminders ('macos' | 'none'). */
+/** Server facts the UI adapts to: storage ('file' | 'database'), restricted, setupMissing. */
 export const getConfig = () => config;
-/** One-line note for confirm dialogs about what happens to the data being replaced. */
+/**
+ * One-line note for the Import confirm about the data being replaced. The server's daily backup
+ * holds the file as it was before the day's first change, not now, so it never promises more.
+ */
 export const backupNote = () => (config.storage === 'database'
-  ? 'Export a backup first (Settings → Your data) if you might want it back.'
-  : 'A copy of the current file stays in data/backups.');
+  ? 'Export a backup first (account menu → Export backup) if you might want it back.'
+  : 'The backups folder next to your data only keeps a copy from before today’s first change — use Export current first to keep what you have now.');
 
 function claimsOf(t) {
   try {
@@ -85,11 +88,11 @@ export function renderGate(root, { onSignedIn, expired = false }) {
   root.replaceChildren(h('div', { class: 'auth-gate' },
     h('div', { class: 'auth-card' },
       h('div', { class: 'auth-logo', html: logoSvg('gate') }),
-      h('h1', {}, 'Welcome to GiveMeBucks'),
-      h('p', { class: 'auth-intro' }, 'Sign in with Google to open your dashboard. Your money data stays private to your account.'),
+      h('h1', {}, 'GiveMeBucks'),
+      h('p', { class: 'auth-intro' }, 'Your net worth, spending and money places in one calm page. Private to your Google account.'),
       slot,
       error,
-      config.restricted ? h('p', { class: 'auth-foot' }, 'Only invited Google accounts can sign in.') : null)));
+      config.restricted ? h('p', { class: 'auth-foot' }, 'Only invited accounts can sign in.') : null)));
 
   if (config.setupMissing?.length) {
     slot.replaceChildren(h('div', { class: 'gsi-missing' }, `This deployment isn’t set up yet. Add these environment variables and redeploy: ${config.setupMissing.join(', ')}.`));
@@ -121,7 +124,8 @@ export function renderGate(root, { onSignedIn, expired = false }) {
   loadGoogleScript().then(() => {
     window.google.accounts.id.initialize({ client_id: config.googleClientId, callback: onCredential });
     slot.replaceChildren();
-    window.google.accounts.id.renderButton(slot, { theme: 'filled_blue', size: 'large', shape: 'pill', text: 'signin_with', width: 280 });
+    const light = document.documentElement.dataset.theme === 'light';
+    window.google.accounts.id.renderButton(slot, { theme: light ? 'outline' : 'filled_black', size: 'large', shape: 'pill', text: 'signin_with', width: 280 });
   }).catch(() => {
     slot.replaceChildren(h('div', { class: 'gsi-missing' }, 'Couldn’t load Google sign-in. Check your internet connection and reload the page.'));
   });
